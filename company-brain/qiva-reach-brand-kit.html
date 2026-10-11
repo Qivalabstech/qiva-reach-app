@@ -1,0 +1,1161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qiva Reach Brand Kit and Plan</title>
+<meta name="description" content="Logo, colour, typography, components, voice, social templates, phase plan and locked feature register for Qiva Reach.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B1F3B'/%3E%3Ccircle cx='28' cy='32' r='14' fill='none' stroke='%23fff' stroke-width='7'/%3E%3Cpath d='M38 42l9 9' stroke='%23fff' stroke-width='7' stroke-linecap='round'/%3E%3Ccircle cx='48' cy='15' r='6' fill='%23F2A900'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1B1F3B; --ink-2:#2A2F55; --paper:#F3F5F4; --white:#FFFFFF;
+  --marigold:#F2A900; --marigold-soft:#FFE8A8; --peacock:#00645A; --peacock-soft:#D4ECE6;
+  --slate:#5D6475; --line:#D9DEDC; --sindoor:#C8331E; --sindoor-soft:#F8DDD8;
+  --bg:var(--paper); --surface:var(--white); --text:var(--ink); --muted:var(--slate); --rule:var(--line);
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --r-s:6px; --r-m:12px; --r-l:20px;
+}
+:root[data-theme="dark"]{
+  --bg:#11142A; --surface:#1B1F3B; --text:#EEF0F6; --muted:#A7ACC2; --rule:#2E3358;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.02em}
+h2{font-size:clamp(32px,4.6vw,52px);font-weight:750}
+h3{font-size:22px;font-weight:700}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.muted{color:var(--muted)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.bar .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.bar .brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:18px;text-decoration:none;white-space:nowrap;flex:none}
+.bar nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.bar nav a{font-size:14px;text-decoration:none;padding:8px 7px;border-radius:8px;color:var(--muted);white-space:nowrap}
+.bar nav a:hover{color:var(--text);background:var(--surface)}
+.theme-btn{border:1px solid var(--rule);background:var(--surface);color:var(--text);border-radius:999px;padding:7px 14px;font:600 13px var(--body);cursor:pointer;white-space:nowrap}
+@media (max-width:860px){.bar nav{display:none}.theme-btn{margin-left:auto}}
+
+/* hero */
+.hero{padding:88px 0 64px}
+.hero h1{font-size:clamp(48px,9vw,120px);font-weight:800;letter-spacing:-.045em;max-width:11ch}
+.fold{position:relative;margin-top:28px;max-width:640px}
+.fold p{font-size:20px}
+.fold .see{display:flex;align-items:center;gap:12px;margin-top:18px;color:var(--muted);font-size:15px}
+.fold .see::before{content:"";flex:1;border-top:2px dashed var(--marigold)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:28px;margin-top:40px;font-size:15px}
+.hero-meta b{display:block;font-family:var(--display);font-size:15px}
+
+section.block{padding:88px 0;border-top:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:end;margin-bottom:48px}
+.sec-head p{color:var(--muted);max-width:56ch}
+@media (max-width:860px){.sec-head{grid-template-columns:1fr;gap:16px}}
+
+/* story */
+.story{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);border-radius:var(--r-l);background:var(--surface);overflow:hidden}
+.story div{padding:28px;border-right:1px solid var(--rule)}
+.story div:last-child{border-right:0}
+.story h3{margin-bottom:10px}
+.story p{color:var(--muted);font-size:16px}
+@media (max-width:860px){.story{grid-template-columns:1fr}.story div{border-right:0;border-bottom:1px solid var(--rule)}.story div:last-child{border-bottom:0}}
+.pos{margin-top:28px;font-family:var(--display);font-size:clamp(22px,2.6vw,30px);line-height:1.3;font-weight:500;max-width:34ch}
+.pos mark{background:linear-gradient(transparent 58%,var(--marigold-soft) 58%);color:inherit;padding:0 2px}
+
+/* logo */
+.logo-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+.logo-tile{border-radius:var(--r-l);border:1px solid var(--rule);background:var(--surface);padding:28px;display:flex;flex-direction:column;gap:18px;min-height:240px}
+.logo-tile .stage{flex:1;display:grid;place-items:center;padding:20px}
+.logo-tile{min-width:0}
+.logo-tile .stage{min-width:0}
+.logo-tile .stage>span{max-width:100%}
+.logo-tile svg{max-width:100%;height:auto}
+.logo-tile.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.logo-tile.gold{background:var(--marigold);border-color:var(--marigold);color:var(--ink)}
+.logo-tile .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px}
+.logo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+@media (max-width:860px){.logo-grid,.logo-row{grid-template-columns:minmax(0,1fr)}}
+.dl{border:1px solid currentColor;background:transparent;color:inherit;border-radius:999px;padding:6px 12px;font:600 13px var(--body);cursor:pointer;opacity:.9}
+.dl:hover{opacity:1;background:color-mix(in srgb,currentColor 10%,transparent)}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+@media (max-width:860px){.rules{grid-template-columns:1fr}}
+.rule-card{border:1px solid var(--rule);border-radius:var(--r-l);padding:28px;background:var(--surface)}
+.rule-card h3{margin-bottom:8px}
+.clear{margin-top:20px;display:grid;place-items:center;padding:24px;background:repeating-linear-gradient(45deg,transparent 0 8px,color-mix(in srgb,var(--marigold) 18%,transparent) 8px 9px);border-radius:var(--r-m)}
+.clear .inner{outline:2px dashed var(--marigold);outline-offset:0;padding:22px;background:var(--surface);border-radius:4px}
+.misuse{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.misuse figure{margin:0;border:1px solid var(--rule);border-radius:var(--r-m);padding:14px 10px 10px;text-align:center;font-size:13px;color:var(--muted)}
+.misuse .m{position:relative}
+.misuse .m::after{content:"";position:absolute;inset:0 12px;background:linear-gradient(to top right,transparent calc(50% - 1px),var(--sindoor) calc(50% - 1px),var(--sindoor) calc(50% + 1px),transparent calc(50% + 1px));opacity:.55;pointer-events:none}
+.misuse .m{height:56px;display:grid;place-items:center;margin-bottom:8px}
+@media (max-width:560px){.misuse{grid-template-columns:repeat(2,1fr)}}
+
+/* colour */
+.swatches{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:860px){.swatches{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.swatches{grid-template-columns:1fr}}
+.sw{border-radius:var(--r-l);overflow:hidden;border:1px solid var(--rule);background:var(--surface);text-align:left;padding:0;cursor:pointer;font:inherit;color:inherit}
+.sw .chip{height:150px;padding:18px;display:flex;align-items:flex-end;font-family:var(--display);font-weight:700;font-size:22px}
+.sw .info{padding:16px 18px;display:grid;gap:2px;font-size:14px}
+.sw .info b{font-size:15px}
+.sw .copied{color:var(--peacock);font-weight:600}
+.ratio{display:flex;height:56px;border-radius:var(--r-m);overflow:hidden;margin-top:24px;border:1px solid var(--rule)}
+.ratio span{display:flex;align-items:center;padding:0 12px;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden}
+.pairs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.pairs div{border-radius:var(--r-m);padding:16px;font-size:14px;font-weight:600;display:flex;justify-content:space-between;gap:8px}
+@media (max-width:860px){.pairs{grid-template-columns:repeat(2,1fr)}}
+
+/* type */
+.type-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:860px){.type-grid{grid-template-columns:1fr}}
+.family{border:1px solid var(--rule);border-radius:var(--r-l);padding:28px;background:var(--surface)}
+.family .big{font-size:96px;line-height:1;margin:10px 0 18px;letter-spacing:-.04em}
+.family .glyphs{font-size:20px;color:var(--muted);word-break:break-all}
+.tester{margin-top:20px;border:1px solid var(--rule);border-radius:var(--r-l);background:var(--surface);overflow:hidden}
+.tester .controls{display:flex;flex-wrap:wrap;gap:12px;padding:16px 20px;border-bottom:1px solid var(--rule);align-items:center}
+.tester input[type=text]{flex:1;min-width:200px}
+.scale-row{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 20px;border-bottom:1px solid var(--rule);align-items:baseline}
+.scale-row:last-child{border-bottom:0}
+.scale-row small{color:var(--muted);font-size:13px}
+.scale-row .s{overflow-wrap:anywhere}
+@media (max-width:560px){.scale-row{grid-template-columns:1fr;gap:4px}}
+
+/* components */
+.comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media (max-width:860px){.comp-grid{grid-template-columns:1fr}}
+.panel{border:1px solid var(--rule);border-radius:var(--r-l);padding:28px;background:var(--surface);display:grid;gap:18px;align-content:start}
+.panel h3{font-size:18px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{font:650 15px var(--display);letter-spacing:-.01em;border-radius:var(--r-m);padding:12px 20px;border:2px solid transparent;cursor:pointer;transition:transform .12s, background .12s}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--ink);color:#fff}
+:root[data-theme="dark"] .btn-primary{background:#fff;color:var(--ink)}
+.btn-primary:hover{background:var(--ink-2)}
+:root[data-theme="dark"] .btn-primary:hover{background:#E6E8F2}
+.btn-accent{background:var(--marigold);color:var(--ink)}
+.btn-accent:hover{background:#FFBA1F}
+.btn-outline{background:transparent;color:var(--text);border-color:var(--text)}
+.btn-ghost{background:transparent;color:var(--text);text-decoration:underline;text-underline-offset:4px;padding-left:4px;padding-right:4px}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.field{display:grid;gap:6px;font-size:14px;font-weight:600}
+.input{font:400 16px var(--body);color:var(--text);background:var(--bg);border:1.5px solid var(--rule);border-radius:var(--r-m);padding:12px 14px;width:100%}
+.input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 4px var(--marigold-soft)}
+:root[data-theme="dark"] .input:focus{border-color:var(--marigold);box-shadow:0 0 0 4px rgba(242,169,0,.25)}
+.input.err{border-color:var(--sindoor)}
+.hint{font-weight:400;font-size:13px;color:var(--muted)}
+.hint.err{color:var(--sindoor)}
+.chipx{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;border:1.5px solid var(--rule);background:transparent;color:var(--text);cursor:pointer}
+.chipx[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+:root[data-theme="dark"] .chipx[aria-pressed="true"]{background:var(--marigold);color:var(--ink);border-color:var(--marigold)}
+.switch{display:inline-flex;align-items:center;gap:10px;font-size:15px;cursor:pointer}
+.switch input{appearance:none;width:44px;height:26px;border-radius:999px;background:var(--rule);position:relative;cursor:pointer;transition:background .15s;margin:0}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .15s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.switch input:checked{background:var(--peacock)}
+.switch input:checked::after{transform:translateX(18px)}
+.alert{border-radius:var(--r-m);padding:14px 16px;font-size:15px;border-left:4px solid}
+.alert.ok{background:var(--peacock-soft);border-color:var(--peacock);color:#0B3B35}
+.alert.warn{background:var(--marigold-soft);border-color:var(--marigold);color:#5A3F00}
+.alert.bad{background:var(--sindoor-soft);border-color:var(--sindoor);color:#5E170D}
+.post{border:1px solid var(--rule);border-radius:var(--r-m);padding:18px;background:var(--bg)}
+.post .who{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 14px var(--display)}
+:root[data-theme="dark"] .avatar{background:var(--marigold);color:var(--ink)}
+.post .seefold{margin-top:10px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.post .seefold::before{content:"";flex:1;border-top:2px dashed var(--marigold)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:var(--r-m);font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:all .2s;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+:root[data-theme="dark"] .toast{background:#fff;color:var(--ink)}
+
+/* voice */
+.voice{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.voice div{border-top:3px solid var(--ink);padding-top:14px}
+:root[data-theme="dark"] .voice div{border-color:var(--marigold)}
+.voice p{color:var(--muted);font-size:15px;margin-top:6px}
+@media (max-width:860px){.voice{grid-template-columns:repeat(2,1fr)}}
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--rule);border-radius:var(--r-l);overflow:hidden;font-size:15px}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--display);font-size:15px;background:color-mix(in srgb,var(--rule) 40%,var(--surface))}
+tr:last-child td{border-bottom:0}
+td.say{color:var(--peacock);font-weight:600}
+:root[data-theme="dark"] td.say{color:#5FD3BE}
+td.avoid{color:var(--sindoor);text-decoration:line-through;text-decoration-thickness:1px}
+:root[data-theme="dark"] td.avoid{color:#FF8C79}
+.table-scroll{overflow-x:auto;border-radius:var(--r-l)}
+
+/* imagery */
+.img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:860px){.img-grid{grid-template-columns:1fr}}
+.icons{display:flex;flex-wrap:wrap;gap:14px}
+.icons span{width:56px;height:56px;border:1px solid var(--rule);border-radius:var(--r-m);display:grid;place-items:center;background:var(--bg)}
+.icons svg{width:26px;height:26px;stroke:var(--text);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* templates */
+.tpl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.tpl-grid .wide{grid-column:1/-1}
+@media (max-width:860px){.tpl-grid{grid-template-columns:1fr}}
+.tpl{border:1px solid var(--rule);border-radius:var(--r-l);background:var(--surface);padding:20px;display:grid;gap:14px;align-content:start}
+.tpl .art{border-radius:var(--r-m);overflow:hidden;border:1px solid var(--rule);line-height:0}
+.tpl .art svg{width:100%;height:auto;display:block}
+.tpl .foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px}
+.tpl-edit{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.tpl-edit{grid-template-columns:1fr}}
+
+/* signature + tokens */
+.sig-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:860px){.sig-wrap{grid-template-columns:1fr}}
+.sig-preview{background:#fff;color:#1B1F3B;border-radius:var(--r-m);padding:22px;border:1px solid var(--line)}
+pre{margin:0;background:var(--ink);color:#E9EBF5;border-radius:var(--r-l);padding:24px;overflow:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;max-height:420px}
+:root[data-theme="dark"] pre{background:#0A0C1C}
+footer{padding:48px 0 64px;border-top:1px solid var(--rule);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* ---------- project plan ---------- */
+.part-intro{padding:72px 0 0}
+.part-intro p{color:var(--muted);max-width:60ch;margin-top:14px;font-size:18px}
+.phase-track{display:grid;grid-template-columns:repeat(7,minmax(140px,1fr));gap:10px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.ph-btn{position:relative;text-align:left;border:1.5px solid var(--rule);background:var(--surface);color:var(--text);border-radius:var(--r-m);padding:14px 14px 16px;cursor:pointer;font:inherit;display:grid;gap:2px;align-content:start}
+.ph-btn:hover{border-color:var(--text)}
+.ph-btn[aria-selected="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+:root[data-theme="dark"] .ph-btn[aria-selected="true"]{border-color:var(--marigold);box-shadow:inset 0 0 0 1px var(--marigold)}
+.ph-btn .n{font:700 13px var(--display);color:var(--muted)}
+.ph-btn .t{font:700 16px/1.2 var(--display)}
+.ph-btn .d{font-size:12.5px;color:var(--muted)}
+.ph-btn.launch{background:var(--marigold);border-color:var(--marigold);color:var(--ink)}
+.ph-btn.launch .n,.ph-btn.launch .d{color:#4A3600}
+.ph-bar{height:5px;border-radius:99px;background:var(--rule);margin-top:10px;overflow:hidden}
+.ph-bar i{display:block;height:100%;background:var(--peacock);width:0;transition:width .3s}
+.ph-btn.launch .ph-bar{background:rgba(27,31,59,.18)}
+.phase-detail{margin-top:20px;border:1px solid var(--rule);border-radius:var(--r-l);background:var(--surface);padding:32px}
+.pd-head{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-start}
+.pd-head h3{font-size:clamp(26px,3vw,36px);font-weight:780}
+.pd-head p{color:var(--muted);margin-top:8px;max-width:62ch}
+.pd-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:24px 0;border:1px solid var(--rule);border-radius:var(--r-m);overflow:hidden}
+.pd-meta div{padding:14px 16px;border-right:1px solid var(--rule)}
+.pd-meta div:last-child{border-right:0}
+.pd-meta b{display:block;font:700 13px var(--display);color:var(--muted)}
+.pd-meta span{font-size:15px}
+@media (max-width:860px){.pd-meta{grid-template-columns:1fr 1fr}.pd-meta div:nth-child(2){border-right:0}.pd-meta div:nth-child(-n+2){border-bottom:1px solid var(--rule)}}
+.pd-cols{display:grid;grid-template-columns:1.3fr 1fr;gap:32px}
+@media (max-width:860px){.pd-cols{grid-template-columns:1fr}.phase-detail{padding:22px}}
+.pd-cols h4{font:700 17px var(--display);margin:0 0 10px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.checks label{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--rule);font-size:15px;cursor:pointer}
+.checks input{margin-top:4px;width:17px;height:17px;accent-color:var(--peacock);flex:none}
+.checks input:checked+span{color:var(--muted);text-decoration:line-through}
+.pd-feats{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.pd-feats button{border:1.5px solid var(--rule);background:var(--bg);color:var(--text);border-radius:999px;padding:4px 10px;font:600 13px var(--body);cursor:pointer}
+.pd-feats button.ok{border-color:var(--peacock);color:var(--peacock)}
+:root[data-theme="dark"] .pd-feats button.ok{color:#5FD3BE;border-color:#5FD3BE}
+.pd-risk{margin-top:20px;padding:14px 16px;border-left:4px solid var(--marigold);background:color-mix(in srgb,var(--marigold-soft) 55%,var(--surface));border-radius:0 var(--r-m) var(--r-m) 0;font-size:15px}
+:root[data-theme="dark"] .pd-risk{background:rgba(242,169,0,.12)}
+.lock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+@media (max-width:860px){.lock-grid{grid-template-columns:1fr}}
+.lock-grid ol,.lock-grid ul{margin:0;padding-left:20px;font-size:15px;display:grid;gap:6px}
+.reg-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.reg-tools .input{max-width:280px}
+.reg-tools select.input{max-width:200px}
+.reg-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.reg-sum div{border:1px solid var(--rule);border-radius:var(--r-m);padding:14px 16px;background:var(--surface)}
+.reg-sum b{display:block;font:800 28px var(--display);letter-spacing:-.02em}
+.reg-sum span{font-size:13px;color:var(--muted)}
+@media (max-width:640px){.reg-sum{grid-template-columns:1fr 1fr}}
+.reg td.id{font-weight:700;font-family:var(--display);white-space:nowrap}
+.reg td.ph{white-space:nowrap}
+.reg td.crit{color:var(--muted);font-size:14px;min-width:280px}
+.reg select{font:600 13px var(--body);border-radius:8px;border:1.5px solid var(--rule);padding:6px 8px;background:var(--bg);color:var(--text)}
+.reg select[data-s="In progress"]{border-color:var(--marigold)}
+.reg select[data-s="Accepted"]{border-color:var(--peacock);color:var(--peacock)}
+.reg select[data-s="Blocked: compliance"]{border-color:var(--sindoor);color:var(--sindoor)}
+.reg-empty{padding:28px;text-align:center;color:var(--muted)}
+.note{font-size:13.5px;color:var(--muted);margin-top:12px}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Qiva Reach brand kit, back to top">
+      <span class="mk" data-logo="mark" data-size="30"></span>Brand kit and plan
+    </a>
+    <nav aria-label="Sections">
+      <a href="#story">Story</a><a href="#logo">Logo</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#components">Components</a><a href="#voice">Voice</a><a href="#imagery">Imagery</a><a href="#templates">Templates</a><a href="#tokens">Tokens</a><a href="#phases">Phases</a><a href="#register">Features</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-pressed="false">Dark preview</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span data-logo="full" data-size="56"></span>
+      <h1 style="margin-top:36px">Write like you. Reach further.</h1>
+      <div class="fold">
+        <p>This kit defines how Qiva Reach looks, sounds and shows up everywhere: the product, the waitlist, LinkedIn banners, carousels and emails. It also holds the locked project plan: seven phases and all 59 features of Scope v1.0.</p>
+        <div class="see">see more below the fold</div>
+      </div>
+      <div class="hero-meta">
+        <div><b>Version</b>1.0, October 2026</div>
+        <div><b>Scope</b>v1.0, locked 11 Oct 2026</div>
+        <div><b>Owner</b>QivaLabs LLP, Udaipur</div>
+        <div><b>Product</b>Qiva Reach, the LinkedIn growth co-pilot</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="story">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Story and positioning</h2>
+        <p>The brand idea comes from the most important line on LinkedIn: the dashed fold where a post says "see more". Everything we make helps people earn the click past that line.</p>
+      </div>
+      <div class="story">
+        <div><h3>Mission</h3><p>Help every professional grow on LinkedIn in their own voice, without hiring a ghostwriter or risking their account.</p></div>
+        <div><h3>Promise</h3><p>You approve every word. We do the drafting, the scheduling, the reminding and the measuring.</p></div>
+        <div><h3>Personality</h3><p>A sharp, warm friend who has read a thousand posts: direct, encouraging, never salesy, never robotic.</p></div>
+      </div>
+      <p class="pos">Qiva Reach is the LinkedIn growth co-pilot that <mark>sounds like you</mark> and never risks your account.</p>
+    </div>
+  </section>
+
+  <section class="block" id="logo">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Logo</h2>
+        <p>The ring is your circle. The tail turns it into a Q. The marigold dot sits just outside the ring: the reach beyond your current network. The dot stays marigold on every background except marigold itself, where the whole logo goes Indigo Ink.</p>
+      </div>
+      <div class="logo-grid">
+        <div class="logo-tile">
+          <div class="stage"><span data-logo="full" data-size="84"></span></div>
+          <div class="foot"><span><b>Primary lockup</b> on light</span><span class="row"><button class="dl" data-dl="full-light">SVG</button></span></div>
+        </div>
+        <div class="logo-tile dark">
+          <div class="stage"><span data-logo="full" data-size="64" data-on="dark"></span></div>
+          <div class="foot"><span><b>Primary lockup</b> on Indigo Ink</span><button class="dl" data-dl="full-dark">SVG</button></div>
+        </div>
+      </div>
+      <div class="logo-row">
+        <div class="logo-tile">
+          <div class="stage"><span data-logo="mark" data-size="96"></span></div>
+          <div class="foot"><span><b>Mark</b> for icons, avatars</span><button class="dl" data-dl="mark">SVG</button></div>
+        </div>
+        <div class="logo-tile dark">
+          <div class="stage"><span data-logo="app" data-size="104"></span></div>
+          <div class="foot"><span><b>App icon</b> and favicon</span><button class="dl" data-dl="app">SVG</button></div>
+        </div>
+        <div class="logo-tile gold">
+          <div class="stage"><span data-logo="full" data-size="52" data-on="gold"></span></div>
+          <div class="foot"><span><b>One-colour</b> for marigold</span><button class="dl" data-dl="full-gold">SVG</button></div>
+        </div>
+      </div>
+      <div class="rules">
+        <div class="rule-card">
+          <h3>Clear space and size</h3>
+          <p class="muted">Keep clear space equal to the dot's diameter on every side. Minimum width: 96 px for the lockup, 20 px for the mark.</p>
+          <div class="clear"><div class="inner"><span data-logo="full" data-size="44"></span></div></div>
+        </div>
+        <div class="rule-card">
+          <h3>Don't</h3>
+          <p class="muted">The mark is simple, so small changes break it quickly.</p>
+          <div class="misuse">
+            <figure><div class="m"><span data-logo="mark" data-size="44" style="display:inline-block;transform:scaleX(1.5)"></span></div>Stretch it</figure>
+            <figure><div class="m"><span data-logo="mark" data-size="44" style="display:inline-block;transform:rotate(-30deg)"></span></div>Rotate it</figure>
+            <figure><div class="m"><span data-logo="mark" data-size="44" data-dot="#0A66C2"></span></div>Recolour the dot</figure>
+            <figure><div class="m"><span data-logo="mark" data-size="44" style="display:inline-block;filter:drop-shadow(3px 4px 2px rgba(0,0,0,.45))"></span></div>Add effects</figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="colour">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Colour</h2>
+        <p>Indigo Ink and Porcelain do most of the work. Marigold is a highlighter: use it to mark the one thing that matters on a screen, never as a background for long text. Click any swatch to copy its hex.</p>
+      </div>
+      <div class="swatches" id="swatches"></div>
+      <div class="ratio" aria-label="Recommended colour proportions">
+        <span style="flex:50;background:#F3F5F4;color:#1B1F3B">Porcelain 50%</span>
+        <span style="flex:28;background:#1B1F3B;color:#fff">Ink 28%</span>
+        <span style="flex:10;background:#FFFFFF;color:#1B1F3B">White 10%</span>
+        <span style="flex:7;background:#F2A900;color:#1B1F3B">Marigold</span>
+        <span style="flex:5;background:#00645A;color:#fff">Peacock</span>
+      </div>
+      <div class="pairs" aria-label="Approved text and background pairs">
+        <div style="background:#1B1F3B;color:#fff">White on Ink <span>AAA</span></div>
+        <div style="background:#F3F5F4;color:#1B1F3B;border:1px solid var(--rule)">Ink on Porcelain <span>AAA</span></div>
+        <div style="background:#F2A900;color:#1B1F3B">Ink on Marigold <span>AAA</span></div>
+        <div style="background:#00645A;color:#fff">White on Peacock <span>AA</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="type">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Typography</h2>
+        <p>Bricolage Grotesque carries the personality: headlines, buttons and numbers. Figtree carries everything people read for longer. Both are free on Google Fonts. Use sentence case everywhere.</p>
+      </div>
+      <div class="type-grid">
+        <div class="family">
+          <b>Bricolage Grotesque</b><span class="muted"> · display, 600 to 800</span>
+          <div class="big" style="font-family:var(--display);font-weight:800">Aa Qq</div>
+          <div class="glyphs" style="font-family:var(--display)">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 ₹$%&amp;?!</div>
+        </div>
+        <div class="family">
+          <b>Figtree</b><span class="muted"> · body and UI, 400 to 700</span>
+          <div class="big" style="font-weight:500">Aa Qq</div>
+          <div class="glyphs">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 ₹$%&amp;?!</div>
+        </div>
+      </div>
+      <div class="tester">
+        <div class="controls">
+          <label class="field" style="flex:1;min-width:220px">Try your own words
+            <input class="input" id="typeInput" type="text" value="Your first two lines decide who reads the rest.">
+          </label>
+        </div>
+        <div id="scale"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="components">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Components</h2>
+        <p>Ink buttons for the main action, marigold only when one action on the screen must stand out (usually "Join the waitlist" or "Publish"). Corners: 12 px for controls, 20 px for panels. Toggle dark preview at the top to see both themes.</p>
+      </div>
+      <div class="comp-grid">
+        <div class="panel">
+          <h3>Buttons</h3>
+          <div class="row">
+            <button class="btn btn-primary" type="button">Schedule post</button>
+            <button class="btn btn-accent" type="button">Join the waitlist</button>
+            <button class="btn btn-outline" type="button">Try another hook</button>
+            <button class="btn btn-ghost" type="button">Cancel</button>
+            <button class="btn btn-primary" type="button" disabled>Publishing…</button>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Form field</h3>
+          <label class="field">Work email
+            <input class="input" id="demoEmail" type="email" placeholder="you@company.com" autocomplete="off">
+            <span class="hint" id="demoHint">We'll only email you about launch and your founding-member price.</span>
+          </label>
+        </div>
+        <div class="panel">
+          <h3>Chips and switches</h3>
+          <div class="row" id="toneChips">
+            <button class="chipx" type="button" aria-pressed="true">Story-led</button>
+            <button class="chipx" type="button" aria-pressed="false">Direct</button>
+            <button class="chipx" type="button" aria-pressed="false">Data-driven</button>
+            <button class="chipx" type="button" aria-pressed="false">Hinglish-friendly</button>
+          </div>
+          <label class="switch"><input type="checkbox" checked> Alert my Circle when this goes live</label>
+        </div>
+        <div class="panel">
+          <h3>Messages</h3>
+          <div class="alert ok">Published. 18 Circle members have been alerted.</div>
+          <div class="alert warn">Your LinkedIn connection expires in 3 days. Reconnect to keep scheduling.</div>
+          <div class="alert bad">This post couldn't publish because LinkedIn rejected the image. Replace it and try again.</div>
+        </div>
+        <div class="panel" style="grid-column:1/-1">
+          <h3>Post preview card</h3>
+          <div class="post">
+            <div class="who"><div class="avatar">RS</div><div><b>Razam Sir</b><div class="muted" style="font-size:13px">CTO, QivaLabs · Scheduled for Tue, 9:10 AM IST</div></div></div>
+            <p>I stopped writing LinkedIn posts from scratch six months ago.<br>Here is what changed, and what didn't.</p>
+            <div class="seefold">see more</div>
+          </div>
+          <button class="btn btn-outline" type="button" id="toastBtn" style="justify-self:start">Show a toast</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="voice">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Voice and tone</h2>
+        <p>We talk like a smart friend who happens to know LinkedIn well. Short sentences. Plain words. We sell outcomes (consistency, reach, leads), never automation.</p>
+      </div>
+      <div class="voice">
+        <div><h3>Direct</h3><p>Say the thing in the first line. No warm-up.</p></div>
+        <div><h3>Warm</h3><p>Encourage people who are nervous about posting.</p></div>
+        <div><h3>Honest</h3><p>No fake numbers, no "guaranteed viral", no hype.</p></div>
+        <div><h3>Local</h3><p>Rupees, IST, Indian examples. Hinglish is fine in social, not in product UI.</p></div>
+      </div>
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th>Moment</th><th>We say</th><th>We avoid</th></tr></thead>
+        <tbody>
+          <tr><td>Headline</td><td class="say">Post every week, in your own voice.</td><td class="avoid">Unlock explosive viral growth with AI-powered synergy.</td></tr>
+          <tr><td>Safety</td><td class="say">You approve every word. Nothing is automated on your account.</td><td class="avoid">Our smart bots engage for you 24/7.</td></tr>
+          <tr><td>Button</td><td class="say">Schedule post</td><td class="avoid">Submit</td></tr>
+          <tr><td>Error</td><td class="say">LinkedIn rejected the image. Replace it and try again.</td><td class="avoid">Oops! Something went wrong 😢</td></tr>
+          <tr><td>Empty state</td><td class="say">No drafts yet. Paste a few old posts and we'll learn your voice.</td><td class="avoid">Nothing to see here!</td></tr>
+          <tr><td>Pricing</td><td class="say">₹1,499 a month. Cancel any time.</td><td class="avoid">Starting at just ₹1,499!!!</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="imagery">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Imagery and icons</h2>
+        <p>Show real work: drafts, calendars, comment threads, people at desks in Indian cities. No stock handshakes, no glowing robot brains, no fake screenshots of LinkedIn's own interface.</p>
+      </div>
+      <div class="img-grid">
+        <div class="panel">
+          <h3>Icons</h3>
+          <p class="muted" style="font-size:15px">Outline, 1.8 px stroke, rounded caps, 24 px grid. Use one icon set (Lucide matches this style).</p>
+          <div class="icons" aria-hidden="true">
+            <span><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><circle cx="18" cy="7" r="3"/><path d="M22 18a5 5 0 0 0-6-4.9"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></span>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>Photography</h3>
+          <p class="muted" style="font-size:15px">Natural light, real workspaces, founders and consultants mid-task. Crop tight. Apply no filters except a slight warm white balance. Never place text over faces.</p>
+        </div>
+        <div class="panel">
+          <h3>The fold motif</h3>
+          <p class="muted" style="font-size:15px">The dashed marigold line is our signature graphic. Use it once per layout: under a hook, between a teaser and the full story, or as a section divider.</p>
+          <div class="post" style="padding:14px"><b style="font-family:var(--display)">The hook goes here.</b><div class="seefold">see more</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="templates">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Social templates</h2>
+        <p>Edit the text below and download a ready SVG at the right size. Open the SVG in a browser, Figma or Canva and export to PNG if a platform needs it.</p>
+      </div>
+      <div class="tpl-edit panel" style="margin-bottom:20px">
+        <label class="field">Headline
+          <input class="input" id="tplHead" type="text" maxlength="70" value="Post every week, in your own voice.">
+        </label>
+        <label class="field">Supporting line
+          <input class="input" id="tplSub" type="text" maxlength="90" value="Join the Qiva Reach waitlist. Founding members get 40% off.">
+        </label>
+      </div>
+      <div class="tpl-grid">
+        <div class="tpl wide"><div class="art" id="tpl-banner"></div><div class="foot"><span><b>LinkedIn profile banner</b> · 1584 × 396 · left side kept clear for your profile photo</span><button class="dl" data-tpl="banner">Download SVG</button></div></div>
+        <div class="tpl"><div class="art" id="tpl-square"></div><div class="foot"><span><b>Post image</b> · 1080 × 1080</span><button class="dl" data-tpl="square">Download SVG</button></div></div>
+        <div class="tpl"><div class="art" id="tpl-carousel"></div><div class="foot"><span><b>Carousel cover</b> · 1080 × 1350</span><button class="dl" data-tpl="carousel">Download SVG</button></div></div>
+        <div class="tpl wide"><div class="art" id="tpl-og"></div><div class="foot"><span><b>Link preview (Open Graph)</b> · 1200 × 630</span><button class="dl" data-tpl="og">Download SVG</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="signature">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Email signature</h2>
+        <p>Type your details, then copy the HTML into Gmail (Settings, Signature) or your mail client.</p>
+      </div>
+      <div class="sig-wrap">
+        <div class="panel">
+          <label class="field">Name <input class="input" id="sigName" type="text" value="Rajamuddin"></label>
+          <label class="field">Role <input class="input" id="sigRole" type="text" value="CTO and Designated Partner"></label>
+          <label class="field">Phone <input class="input" id="sigPhone" type="text" value="+91 00000 00000"></label>
+          <label class="field">Website <input class="input" id="sigWeb" type="text" value="qivareach.com"></label>
+          <button class="btn btn-primary" type="button" id="copySig" style="justify-self:start">Copy signature HTML</button>
+        </div>
+        <div class="panel">
+          <h3>Preview</h3>
+          <div class="sig-preview" id="sigPreview"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="tokens">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Design tokens</h2>
+        <p>Paste these into the product's global CSS, or hand them to the AI coding tool as the source of truth for every screen.</p>
+      </div>
+      <pre id="tokenCode"></pre>
+      <div class="row" style="margin-top:16px">
+        <button class="btn btn-primary" type="button" id="copyTokens">Copy CSS tokens</button>
+        <button class="btn btn-outline" type="button" id="dlTokens">Download tokens.css</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="phases">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Phase plan</h2>
+        <p>Seven phases from 12 Oct 2026 to 30 Jun 2027. A phase starts only when the previous exit gate is fully passed. Select a phase to see its work packages, gate, budget and features. Ticks are saved in this browser.</p>
+      </div>
+      <div class="phase-track" id="phaseTrack" role="tablist" aria-label="Phases"></div>
+      <div class="phase-detail" id="phaseDetail" role="tabpanel"></div>
+
+      <div class="lock-grid">
+        <div class="panel">
+          <h3>Scope v1.0 is locked</h3>
+          <ol>
+            <li>No feature is added to any phase.</li>
+            <li>No feature is removed, split or cut down.</li>
+            <li>No feature moves between phases.</li>
+            <li>No acceptance criterion is weakened.</li>
+            <li>New ideas go to the parking lot, reviewed after 30 Jun 2027.</li>
+          </ol>
+        </div>
+        <div class="panel">
+          <h3>The only exceptions</h3>
+          <ol>
+            <li><b>Compliance:</b> LinkedIn, Chrome Web Store, payment, GST or data-protection rules require it.</li>
+            <li><b>Security:</b> it fixes a vulnerability or data-exposure risk.</li>
+            <li><b>Bug fix:</b> it makes a locked feature meet its own criteria.</li>
+          </ol>
+          <p class="note">Each needs written approval from both Designated Partners. If a phase runs late, the date moves; the scope does not.</p>
+        </div>
+        <div class="panel">
+          <h3>Definition of done</h3>
+          <ul>
+            <li>Meets every acceptance criterion</li>
+            <li>Passes the LinkedIn compliance gate</li>
+            <li>Works on Chrome, Safari and a 390 px phone</li>
+            <li>Row-level security plus a clean Hakscan run</li>
+            <li>Tracked in PostHog; help note written</li>
+            <li>Demoed to 3 beta users or both partners</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="register">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Locked feature register</h2>
+        <p>All 59 features of Scope v1.0, each in exactly one phase with its acceptance criteria. Status is the only thing that changes. Statuses are saved in this browser; export a CSV to share progress.</p>
+      </div>
+      <div class="reg-sum" id="regSum"></div>
+      <div class="reg-tools">
+        <label class="sr-only" for="regSearch">Search features</label>
+        <input class="input" id="regSearch" type="search" placeholder="Search features or criteria">
+        <label class="sr-only" for="regPhase">Filter by phase</label>
+        <select class="input" id="regPhase"></select>
+        <label class="sr-only" for="regStatus">Filter by status</label>
+        <select class="input" id="regStatus"></select>
+        <button class="btn btn-outline" type="button" id="regCsv" style="margin-left:auto">Export CSV</button>
+        <button class="btn btn-ghost" type="button" id="regReset">Reset statuses</button>
+      </div>
+      <div class="table-scroll">
+        <table class="reg">
+          <thead><tr><th>ID</th><th>Feature</th><th>Module</th><th>Phase</th><th>Acceptance criteria</th><th>Status</th></tr></thead>
+          <tbody id="regBody"></tbody>
+        </table>
+      </div>
+      <p class="note" id="regCount"></p>
+
+      <div class="lock-grid" style="grid-template-columns:1fr 1fr">
+        <div class="panel">
+          <h3>Never built</h3>
+          <ul>
+            <li>Auto-likes, auto-comments, auto-reshares, auto-follows</li>
+            <li>Automated connection requests or messages</li>
+            <li>Scraping profiles, feeds, search or analytics</li>
+            <li>Hidden browsers acting on a user's account</li>
+            <li>Storing LinkedIn passwords or session cookies</li>
+            <li>Lifetime deals</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Parking lot, reviewed after 30 Jun 2027</h3>
+          <ul>
+            <li>iOS and Android apps</li>
+            <li>X, Instagram, Threads, YouTube</li>
+            <li>Hindi and regional-language interface</li>
+            <li>CRM, Slack and Teams integrations</li>
+            <li>LinkedIn Ads, AI video, public API, enterprise SSO</li>
+            <li>Agency white-label on a custom domain</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Qiva Reach brand kit and plan v1.0 · QivaLabs LLP, Udaipur, India</span>
+    <span>Qiva Reach is not affiliated with or endorsed by LinkedIn Corporation.</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const C = { ink:'#1B1F3B', paper:'#F3F5F4', white:'#FFFFFF', marigold:'#F2A900', marigoldSoft:'#FFE8A8', peacock:'#00645A', peacockSoft:'#D4ECE6', slate:'#5D6475', line:'#D9DEDC', sindoor:'#C8331E' };
+  const FONT_IMPORT = "@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Figtree:wght@400;600&amp;display=swap');";
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  /* ---------- logo builders ---------- */
+  const markPaths = (stroke, dot) =>
+    `<circle cx="28" cy="32" r="16" fill="none" stroke="${stroke}" stroke-width="8"/>` +
+    `<path d="M39.5 43.5 50 54" stroke="${stroke}" stroke-width="8" stroke-linecap="round"/>` +
+    `<circle cx="51" cy="12" r="7" fill="${dot}"/>`;
+  const markSVG = (size, stroke = C.ink, dot = C.marigold) =>
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="${size}" height="${size}" role="img" aria-label="Qiva Reach mark">${markPaths(stroke, dot)}</svg>`;
+  const appSVG = size =>
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="${size}" height="${size}" role="img" aria-label="Qiva Reach app icon"><rect width="64" height="64" rx="15" fill="${C.ink}"/><g transform="translate(6 6) scale(.81)">${markPaths('#FFFFFF', C.marigold)}</g></svg>`;
+  const fullSVG = (h, ink = C.ink, dot = C.marigold, standalone = false) => {
+    const w = Math.round(h * 4.6);
+    const style = standalone ? `<style>${FONT_IMPORT}</style>` : '';
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 294 64" width="${w}" height="${h}" role="img" aria-label="Qiva Reach">${style}${markPaths(ink, dot)}<text x="76" y="44" font-family="'Bricolage Grotesque', 'Segoe UI', sans-serif" font-size="38" font-weight="750" letter-spacing="-1.2" fill="${ink}">qiva reach</text></svg>`;
+  };
+  const renderLogos = () => {
+    const dark = document.documentElement.dataset.theme === 'dark';
+    document.querySelectorAll('[data-logo]').forEach(el => {
+      const size = +el.dataset.size || 40, on = el.dataset.on, kind = el.dataset.logo;
+      const inTile = el.closest('.logo-tile');
+      const fg = on === 'dark' ? '#FFFFFF' : on === 'gold' ? C.ink : (dark && !inTile ? '#FFFFFF' : (dark && inTile && !inTile.classList.contains('dark') && !inTile.classList.contains('gold') ? '#FFFFFF' : C.ink));
+      const dot = on === 'gold' ? C.ink : (el.dataset.dot || C.marigold);
+      el.innerHTML = kind === 'mark' ? markSVG(size, fg, dot) : kind === 'app' ? appSVG(size) : fullSVG(size, fg, dot);
+      el.style.display = el.style.display || 'inline-block';
+      el.style.lineHeight = '0';
+    });
+  };
+
+  /* ---------- toast + clipboard + download ---------- */
+  const toastEl = document.getElementById('toast');
+  let toastT;
+  const toast = msg => { toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => toastEl.classList.remove('show'), 1800); };
+  const copy = async (text, msg) => {
+    try { await navigator.clipboard.writeText(text); toast(msg); }
+    catch { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); toast(msg); } catch { toast('Copy failed. Select and copy manually.'); } t.remove(); }
+  };
+  const download = (name, content, type = 'image/svg+xml') => {
+    const url = URL.createObjectURL(new Blob([content], { type }));
+    const a = Object.assign(document.createElement('a'), { href: url, download: name });
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    toast(`Downloaded ${name}`);
+  };
+  const LOGO_FILES = {
+    'full-light': () => ['qiva-reach-logo.svg', fullSVG(64, C.ink, C.marigold, true)],
+    'full-dark': () => ['qiva-reach-logo-on-dark.svg', fullSVG(64, '#FFFFFF', C.marigold, true)],
+    'full-gold': () => ['qiva-reach-logo-one-colour.svg', fullSVG(64, C.ink, C.ink, true)],
+    'mark': () => ['qiva-reach-mark.svg', markSVG(512)],
+    'app': () => ['qiva-reach-app-icon.svg', appSVG(512)]
+  };
+  document.querySelectorAll('[data-dl]').forEach(b => b.addEventListener('click', () => { const [n, s] = LOGO_FILES[b.dataset.dl](); download(n, s); }));
+
+  /* ---------- theme ---------- */
+  const themeBtn = document.getElementById('themeBtn');
+  themeBtn.addEventListener('click', () => {
+    const dark = document.documentElement.dataset.theme !== 'dark';
+    document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    themeBtn.setAttribute('aria-pressed', dark);
+    themeBtn.textContent = dark ? 'Light preview' : 'Dark preview';
+    renderLogos();
+  });
+
+  /* ---------- swatches ---------- */
+  const hexToRgb = h => [1,3,5].map(i => parseInt(h.slice(i, i + 2), 16)).join(', ');
+  const SW = [
+    { name:'Indigo Ink', hex:C.ink, fg:'#fff', use:'Text, primary buttons, dark surfaces' },
+    { name:'Porcelain', hex:C.paper, fg:C.ink, use:'Page background' },
+    { name:'Marigold', hex:C.marigold, fg:C.ink, use:'Highlights, the fold line, one key action' },
+    { name:'Peacock', hex:C.peacock, fg:'#fff', use:'Success, positive growth, toggles' },
+    { name:'Slate', hex:C.slate, fg:'#fff', use:'Secondary text, captions' },
+    { name:'Sindoor', hex:C.sindoor, fg:'#fff', use:'Errors and destructive actions only' },
+    { name:'White', hex:C.white, fg:C.ink, use:'Cards, inputs, panels' },
+    { name:'Marigold Soft', hex:C.marigoldSoft, fg:C.ink, use:'Text highlight, focus ring, warnings' },
+    { name:'Peacock Soft', hex:C.peacockSoft, fg:C.ink, use:'Success backgrounds' }
+  ];
+  const swWrap = document.getElementById('swatches');
+  SW.forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'sw'; b.type = 'button';
+    b.setAttribute('aria-label', `Copy ${s.name} ${s.hex}`);
+    b.innerHTML = `<div class="chip" style="background:${s.hex};color:${s.fg};${s.hex === C.white ? 'border-bottom:1px solid var(--line)' : ''}">${s.name}</div><div class="info"><b>${s.hex}</b><span class="muted">RGB ${hexToRgb(s.hex)}</span><span>${s.use}</span></div>`;
+    b.addEventListener('click', () => copy(s.hex, `Copied ${s.name} ${s.hex}`));
+    swWrap.appendChild(b);
+  });
+
+  /* ---------- type scale ---------- */
+  const SCALE = [
+    { label:'Display · 72/0.95', css:'font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,72px);line-height:.95;letter-spacing:-.04em' },
+    { label:'H1 · 48/1.05', css:'font-family:var(--display);font-weight:750;font-size:clamp(32px,4.4vw,48px);line-height:1.05;letter-spacing:-.03em' },
+    { label:'H2 · 32/1.1', css:'font-family:var(--display);font-weight:700;font-size:32px;line-height:1.1;letter-spacing:-.02em' },
+    { label:'H3 · 22/1.2', css:'font-family:var(--display);font-weight:700;font-size:22px;line-height:1.2' },
+    { label:'Body L · 20/1.55', css:'font-size:20px;line-height:1.55' },
+    { label:'Body · 17/1.6', css:'font-size:17px;line-height:1.6' },
+    { label:'Small · 14/1.5', css:'font-size:14px;line-height:1.5;color:var(--muted)' }
+  ];
+  const scaleEl = document.getElementById('scale'), typeInput = document.getElementById('typeInput');
+  const renderScale = () => {
+    const txt = esc(typeInput.value || 'Your first two lines decide who reads the rest.');
+    scaleEl.innerHTML = SCALE.map(s => `<div class="scale-row"><small>${s.label}</small><div class="s" style="${s.css}">${txt}</div></div>`).join('');
+  };
+  typeInput.addEventListener('input', renderScale);
+
+  /* ---------- components ---------- */
+  document.querySelectorAll('#toneChips .chipx').forEach(c => c.addEventListener('click', () => {
+    document.querySelectorAll('#toneChips .chipx').forEach(x => x.setAttribute('aria-pressed', 'false'));
+    c.setAttribute('aria-pressed', 'true');
+  }));
+  const demoEmail = document.getElementById('demoEmail'), demoHint = document.getElementById('demoHint');
+  demoEmail.addEventListener('blur', () => {
+    const bad = demoEmail.value && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(demoEmail.value);
+    demoEmail.classList.toggle('err', bad);
+    demoHint.classList.toggle('err', bad);
+    demoHint.textContent = bad ? 'Enter an email like name@company.com.' : "We'll only email you about launch and your founding-member price.";
+  });
+  document.getElementById('toastBtn').addEventListener('click', () => toast('Scheduled for Tue, 9:10 AM IST'));
+
+  /* ---------- social templates ---------- */
+  const wrapText = (text, max) => {
+    const words = text.split(/\s+/), lines = []; let cur = '';
+    words.forEach(w => { if ((cur + ' ' + w).trim().length > max) { if (cur) lines.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); });
+    if (cur) lines.push(cur); return lines;
+  };
+  const tspans = (lines, x, lh) => lines.map((l, i) => `<tspan x="${x}" dy="${i ? lh : 0}">${esc(l)}</tspan>`).join('');
+  const lockup = (x, y, s, ink, dot) => `<g transform="translate(${x} ${y}) scale(${s})">${markPaths(ink, dot)}<text x="76" y="44" font-family="'Bricolage Grotesque', sans-serif" font-size="38" font-weight="750" letter-spacing="-1.2" fill="${ink}">qiva reach</text></g>`;
+  const head = () => (document.getElementById('tplHead').value || 'Post every week, in your own voice.').trim();
+  const sub = () => (document.getElementById('tplSub').value || '').trim();
+  const svgOpen = (w, h) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}"><style>${FONT_IMPORT} .d{font-family:'Bricolage Grotesque','Segoe UI',sans-serif}.b{font-family:'Figtree','Segoe UI',sans-serif}</style>`;
+  const TPL = {
+    banner: () => {
+      const L = wrapText(head(), 30);
+      return `${svgOpen(1584, 396)}<rect width="1584" height="396" fill="${C.ink}"/>` +
+        `<text class="d" x="620" y="${L.length > 1 ? 150 : 185}" font-size="58" font-weight="800" letter-spacing="-2" fill="#fff">${tspans(L.slice(0, 2), 620, 64)}</text>` +
+        `<line x1="620" x2="1500" y1="${L.length > 1 ? 262 : 228}" y2="${L.length > 1 ? 262 : 228}" stroke="${C.marigold}" stroke-width="4" stroke-dasharray="14 10"/>` +
+        `<text class="b" x="620" y="${L.length > 1 ? 310 : 276}" font-size="26" fill="#C9CCE0">${esc(sub())}</text>` +
+        `${lockup(1290, 40, 0.8, '#fff', C.marigold)}</svg>`;
+    },
+    square: () => {
+      const L = wrapText(head(), 18);
+      const y0 = 300;
+      return `${svgOpen(1080, 1080)}<rect width="1080" height="1080" fill="${C.paper}"/>` +
+        `<text class="d" x="96" y="${y0}" font-size="96" font-weight="800" letter-spacing="-3.5" fill="${C.ink}">${tspans(L.slice(0, 4), 96, 104)}</text>` +
+        `<line x1="96" x2="984" y1="${y0 + Math.min(L.length, 4) * 104 + 10}" y2="${y0 + Math.min(L.length, 4) * 104 + 10}" stroke="${C.marigold}" stroke-width="6" stroke-dasharray="20 14"/>` +
+        `<text class="b" x="96" y="${y0 + Math.min(L.length, 4) * 104 + 80}" font-size="34" fill="${C.slate}">${tspans(wrapText(sub(), 46).slice(0, 2), 96, 46)}</text>` +
+        `${lockup(96, 940, 1.1, C.ink, C.marigold)}</svg>`;
+    },
+    carousel: () => {
+      const L = wrapText(head(), 16);
+      return `${svgOpen(1080, 1350)}<rect width="1080" height="1350" fill="${C.ink}"/>` +
+        `<circle cx="930" cy="170" r="70" fill="${C.marigold}"/>` +
+        `<text class="d" x="96" y="460" font-size="112" font-weight="800" letter-spacing="-4" fill="#fff">${tspans(L.slice(0, 4), 96, 118)}</text>` +
+        `<line x1="96" x2="984" y1="${460 + Math.min(L.length, 4) * 118 + 20}" y2="${460 + Math.min(L.length, 4) * 118 + 20}" stroke="${C.marigold}" stroke-width="6" stroke-dasharray="20 14"/>` +
+        `<text class="b" x="96" y="${460 + Math.min(L.length, 4) * 118 + 96}" font-size="38" fill="#C9CCE0">Swipe to see more</text>` +
+        `${lockup(96, 1210, 1, '#fff', C.marigold)}</svg>`;
+    },
+    og: () => {
+      const L = wrapText(head(), 24);
+      return `${svgOpen(1200, 630)}<rect width="1200" height="630" fill="${C.paper}"/><rect x="0" y="0" width="16" height="630" fill="${C.marigold}"/>` +
+        `${lockup(80, 70, 0.9, C.ink, C.marigold)}` +
+        `<text class="d" x="80" y="290" font-size="76" font-weight="800" letter-spacing="-2.6" fill="${C.ink}">${tspans(L.slice(0, 3), 80, 82)}</text>` +
+        `<text class="b" x="80" y="${290 + Math.min(L.length, 3) * 82 + 40}" font-size="30" fill="${C.slate}">${esc(sub())}</text></svg>`;
+    }
+  };
+  const renderTemplates = () => Object.keys(TPL).forEach(k => { document.getElementById('tpl-' + k).innerHTML = TPL[k](); });
+  ['tplHead', 'tplSub'].forEach(id => document.getElementById(id).addEventListener('input', renderTemplates));
+  const TPL_NAMES = { banner:'qiva-reach-linkedin-banner-1584x396.svg', square:'qiva-reach-post-1080x1080.svg', carousel:'qiva-reach-carousel-cover-1080x1350.svg', og:'qiva-reach-og-1200x630.svg' };
+  document.querySelectorAll('[data-tpl]').forEach(b => b.addEventListener('click', () => download(TPL_NAMES[b.dataset.tpl], TPL[b.dataset.tpl]())));
+
+  /* ---------- email signature ---------- */
+  const sigIds = ['sigName', 'sigRole', 'sigPhone', 'sigWeb'];
+  const sigHTML = () => {
+    const [n, r, p, w] = sigIds.map(id => esc(document.getElementById(id).value.trim()));
+    const url = w ? (w.startsWith('http') ? w : 'https://' + w) : '';
+    return `<table cellpadding="0" cellspacing="0" style="font-family:Arial,Helvetica,sans-serif;color:#1B1F3B;font-size:14px;line-height:1.45"><tr><td style="padding-right:14px;vertical-align:top"><div style="width:44px;height:44px;border-radius:10px;background:#1B1F3B;text-align:center;line-height:44px;color:#fff;font-weight:bold;font-size:20px">Q<span style="color:#F2A900">.</span></div></td><td style="border-left:3px dashed #F2A900;padding-left:14px"><div style="font-weight:bold;font-size:16px">${n}</div><div style="color:#5D6475">${r}, Qiva Reach</div><div style="margin-top:6px">${p}${p && url ? ' &nbsp;|&nbsp; ' : ''}${url ? `<a href="${url}" style="color:#00645A;text-decoration:none;font-weight:bold">${w}</a>` : ''}</div><div style="color:#5D6475;font-size:12px;margin-top:4px">A QivaLabs product, Udaipur, India</div></td></tr></table>`;
+  };
+  const renderSig = () => { document.getElementById('sigPreview').innerHTML = sigHTML(); };
+  sigIds.forEach(id => document.getElementById(id).addEventListener('input', renderSig));
+  document.getElementById('copySig').addEventListener('click', () => copy(sigHTML(), 'Signature HTML copied'));
+
+  /* ---------- tokens ---------- */
+  const TOKENS = `/* Qiva Reach design tokens v1.0 */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600;700&display=swap');
+
+:root {
+  /* colour */
+  --qr-ink: ${C.ink};
+  --qr-ink-2: #2A2F55;
+  --qr-porcelain: ${C.paper};
+  --qr-white: ${C.white};
+  --qr-marigold: ${C.marigold};
+  --qr-marigold-soft: ${C.marigoldSoft};
+  --qr-peacock: ${C.peacock};
+  --qr-peacock-soft: ${C.peacockSoft};
+  --qr-slate: ${C.slate};
+  --qr-line: ${C.line};
+  --qr-sindoor: ${C.sindoor};
+
+  /* type */
+  --qr-font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --qr-font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --qr-text-display: clamp(40px, 6vw, 72px);
+  --qr-text-h1: clamp(32px, 4.4vw, 48px);
+  --qr-text-h2: 32px;
+  --qr-text-h3: 22px;
+  --qr-text-body-l: 20px;
+  --qr-text-body: 17px;
+  --qr-text-small: 14px;
+
+  /* shape and space */
+  --qr-radius-s: 6px;
+  --qr-radius-m: 12px;
+  --qr-radius-l: 20px;
+  --qr-space: 8px; /* use multiples: 8, 16, 24, 32, 48, 64, 88 */
+  --qr-focus: 0 0 0 4px var(--qr-marigold-soft);
+}
+
+[data-theme="dark"] {
+  --qr-bg: #11142A;
+  --qr-surface: #1B1F3B;
+  --qr-text: #EEF0F6;
+  --qr-muted: #A7ACC2;
+  --qr-line: #2E3358;
+}`;
+  document.getElementById('tokenCode').textContent = TOKENS;
+  document.getElementById('copyTokens').addEventListener('click', () => copy(TOKENS, 'CSS tokens copied'));
+  document.getElementById('dlTokens').addEventListener('click', () => download('qiva-reach-tokens.css', TOKENS, 'text/css'));
+
+  renderLogos(); renderScale(); renderTemplates(); renderSig();
+})();
+</script>
+
+<script>
+/* ============ Project plan: phases + locked feature register (Scope v1.0, 11 Oct 2026) ============ */
+(() => {
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const load = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } };
+  const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
+
+  const FEATURES = [
+    ['A1','Onboarding','Sign in with LinkedIn',1,'LinkedIn OpenID Connect login works; name, photo and headline saved; no password or session cookie stored; token encrypted at rest'],
+    ['A2','Onboarding','Email and Google sign-up',1,'Email magic link and Google login both work; the account can connect LinkedIn later'],
+    ['A3','Onboarding','Goal and niche setup',1,'User picks 1 of 4 goals and a niche (list or free text); both editable in settings'],
+    ['A4','Onboarding','Voice import',1,'Accepts 5–20 pasted posts or the LinkedIn data-export file; fewer than 3 posts shows a clear message'],
+    ['B1','AI Voice Engine','Voice profile',1,'Stores tone, average length, emoji use, banned and signature phrases; user can view and edit each field'],
+    ['B2','AI Voice Engine','Tone presets',1,'5 presets (Professional, Story-led, Contrarian, Hinglish-friendly, Data-driven) give visibly different output in a side-by-side test'],
+    ['C1','Content Studio','Idea generator',1,'20 niche-relevant ideas per click in under 10 seconds; no duplicates within a session'],
+    ['C2','Content Studio','Post writer',1,"Topic or notes become a 120–250 word post in under 20 seconds in the user's voice; automated banned-phrase check passes"],
+    ['C3','Content Studio','Hook lab',1,'10 hook options per post, each with a 1–10 strength score and one-click swap'],
+    ['A5','Onboarding','First draft in 5 minutes',2,'Median time from sign-up to first saved draft is under 5 minutes in PostHog'],
+    ['C4','Content Studio','Rewrite tools',2,'Shorten, expand, make punchier, add story and add CTA each return in under 10 seconds; undo works'],
+    ['C5','Content Studio','LinkedIn preview',2,'Mobile and desktop preview; "see more" cut-off marked at LinkedIn\'s current truncation, re-checked monthly'],
+    ['C6','Content Studio','Formatting toolbar',2,"Unicode bold and italic, line breaks, bullets, emoji; counter warns at LinkedIn's 3,000-character limit"],
+    ['D1','Scheduler','Content calendar',2,"Week and month views; drag to reschedule; draft, scheduled, published and failed states; times in the user's time zone"],
+    ['D2','Scheduler','Publish via official API',2,'Text and single-image posts publish within 2 minutes of schedule; post ID stored; 3 retries then email with copy-and-post fallback; 99% success over 100 tests'],
+    ['E1','Community (Circles)','Join Circles',2,'Browse and join up to the plan limit; Circle size 20–50; leave at any time'],
+    ['E2','Community (Circles)','Post alerts',2,"Members get an email alert within 5 minutes of a member's post going live; daily-digest option"],
+    ['E3','Community (Circles)','Engage queue',2,'Shows Circle posts from the last 48 hours; each opens on linkedin.com in a new tab; mark as done'],
+    ['E4','Community (Circles)','Reciprocity score',2,'Given-to-received ratio updated daily and visible to the member; below 0.5 for 14 days means fewer alerts on their own posts'],
+    ['F1','Comment Co-pilot','Chrome extension',2,'Manifest V3; "AI suggest" button under posts on linkedin.com; minimal permissions; never clicks Post; approved on the Chrome Web Store'],
+    ['F2','Comment Co-pilot','Comment suggestions',2,"3 suggestions in the user's voice in under 5 seconds; chosen one inserted into the comment box; user submits manually"],
+    ['K1','Billing','Plans and trials',2,'Free, Starter, Pro, Agency as priced in the blueprint; 7-day trial; self-serve upgrade, downgrade and cancel; limits enforced'],
+    ['K2','Billing','Razorpay and USD payments',2,'INR through Razorpay subscriptions (UPI autopay and cards); USD through the chosen provider; webhooks update plan state within 1 minute'],
+    ['K3','Billing','AI credit metering',2,'Every AI call logged with tokens and cost; per-plan limits; top-up packs purchasable; user sees remaining usage'],
+    ['K4','Billing','GST invoices',2,'Invoice with QivaLabs GSTIN and CA-confirmed tax code generated per payment, emailed and downloadable'],
+    ['L1','Admin','Admin console',2,'Search users; view plan and usage; issue refunds; move Circle members; shows the 9 KPI numbers'],
+    ['L2','Admin','Abuse controls',2,'Rate limits per user and IP; spam flags; suspend user; remove from Circle; every action written to audit_log'],
+    ['N1','Notifications','Email notifications',2,'Welcome, published, failed, trial-ending and invoice emails sent through Resend; unsubscribe on non-transactional emails'],
+    ['M3','Growth','Free SEO tools',3,'5 tools live (hook generator, post formatter, character counter, headline generator, carousel templates) plus 50 programmatic pages, each with a sign-up call to action, indexed in Search Console'],
+    ['B3','AI Voice Engine','Brand knowledge base',5,'Up to 10 documents or links (offer, case studies, bio); drafts use their facts correctly in 9 of 10 tests'],
+    ['B4','AI Voice Engine','Learning from edits',5,'User edits update the voice profile weekly; average edit share per draft falls over 4 weeks for active users'],
+    ['C7','Content Studio','Carousel maker',5,'Post becomes a 5–10 slide PDF at 1080×1350 in 3 brand templates; downloadable'],
+    ['C8','Content Studio','Repurpose',5,'Blog URL, pasted transcript or voice note becomes 3–5 draft posts'],
+    ['D3','Scheduler','Best-time suggestions',5,"3 suggested slots a week from the user's own engagement data; labelled niche defaults when data is thin"],
+    ['D4','Scheduler','Queue and evergreen recycle',5,'Empty slots fill only from approved drafts; evergreen posts re-queue no sooner than 90 days'],
+    ['D5','Scheduler','First comment',5,"User's own first comment posts with the post through an approved API scope; if no scope allows it, a one-click copy reminder at publish time"],
+    ['E5','Community (Circles)','Private Circles',5,'Invite-only Circles with invite link; owner can add and remove members'],
+    ['E6','Community (Circles)','Quality moderation',5,'Members report low-effort comments; AI flags generic ones; 3 confirmed reports give a warning, 5 remove the member'],
+    ['F3','Comment Co-pilot','Reply assistant',5,"Reply suggestions for comments on the user's own posts inside the extension; user posts manually"],
+    ['F4','Comment Co-pilot','Daily comment goals',5,'User sets a daily target; streak counter; reminder by email or push'],
+    ['G1','Company Page','Company page publishing',5,'Schedule posts to pages the user administers via the Community Management API; marked Blocked if LinkedIn has not approved access'],
+    ['H1','Analytics','Post performance',5,'Impressions, reactions and comments per post from granted API scopes or the uploaded LinkedIn export; refreshed daily'],
+    ['H2','Analytics','Weekly insight email',5,'Every Friday at 6 PM IST: best post, best hook type, best time, posting streak'],
+    ['H4','Analytics','Follower growth tracker',5,'Weekly follower count from API or manual entry; 12-week trend chart'],
+    ['I1','Inspiration','Hook and post template library',5,'500+ original hook and post-structure templates written by QivaLabs, tagged by niche and format; no copied third-party posts'],
+    ['I2','Inspiration','Swipe file',5,'Save hooks, posts and ideas with tags; searchable'],
+    ['J1','Agency and Team','Multi-profile workspace',5,'One login manages profiles up to the plan limit; each has its own voice, calendar and Circles'],
+    ['J2','Agency and Team','Approval workflow',5,'Draft, client review link (no login), approve or request changes, then scheduled; comments on drafts; email at each step'],
+    ['J4','Agency and Team','Roles and seats',5,'Owner, editor and client-viewer roles enforced on the server'],
+    ['M1','Growth','Referral programme',5,"Unique link; give one month, get one month; credit applied automatically after the referred user's first payment"],
+    ['M2','Growth','Affiliate programme',5,'30% recurring for 12 months; affiliate dashboard; monthly payout report; published terms'],
+    ['N2','Notifications','WhatsApp and browser push alerts',5,'Circle alerts through an approved WhatsApp Business template and browser push; opt-in per channel with an off switch'],
+    ['C9','Content Studio','Image generator',6,'Quote cards and simple visuals in brand colours at 1080×1080 and 1200×627'],
+    ['D6','Scheduler','Document and video posts',6,'PDF carousels and native video publish through the API where scopes allow'],
+    ['F5','Comment Co-pilot','Target list',6,'Saved list of up to 100 people to engage with, added by the user; daily reminder with links; no data fetched from LinkedIn'],
+    ['G2','Company Page','Employee advocacy',6,'Page admin notifies team members of new page posts; members engage manually; participation leaderboard'],
+    ['G3','Company Page','Page analytics',6,'Follower growth and post performance for company pages through the Community Management API'],
+    ['H3','Analytics','Content scoring',6,"Ranks the user's topics, formats and hooks by engagement once 20 or more posts are tracked"],
+    ['J3','Agency and Team','Client report PDF',6,'Monthly white-label PDF per client: posts, engagement, follower growth, top posts']
+  ].map(([id, module, name, phase, crit]) => ({ id, module, name, phase, crit }));
+
+  const PHASES = [
+    { n:0, name:'Validation and setup', dates:'12–25 Oct 2026', weeks:'2 weeks', owners:'Razam Sir: specs, LinkedIn app, accounts. Arman Hussain: interviews, waitlist outreach, legal pages.', budget:'≈ ₹35,000', depends:'Nothing',
+      goal:'Prove people want it, start every account and approval, and write the specs Phase 1 builds from. No product features are built.',
+      wps:['Trademark search for "Qiva Reach" (classes 9 and 42), buy the domain, set up business email','Deploy the waitlist page, connect it to Google Sheets or Supabase, add PostHog','20 customer interviews (8 founders, 6 consultants, 4 agencies, 2 marketers) with one fixed script','Create the LinkedIn developer app under QivaLabs LLP; enable Sign In and Share; apply for the Community Management API','Write one-page specs for the 28 Phase 1–2 features and wireframes for 12 core screens','Publish privacy policy, terms, refund policy, cookie notice and DPDP notice','Open Razorpay (LLP KYC), USD payment provider, GitHub, Vercel, Supabase, PostHog, Sentry, Resend and Chrome Web Store accounts','Both partners start daily build-in-public posts on LinkedIn'],
+      gate:['300 waitlist signups','15 people commit in writing to a founding plan','All 28 Phase 1–2 specs signed by both partners','LinkedIn app live with Sign In and Share enabled'],
+      risk:'Fewer than 300 signups. Extend Phase 0 by a week and rework the headline and posts; do not start Phase 1 without the gate.' },
+    { n:1, name:'Foundation build', dates:'26 Oct–8 Nov 2026', weeks:'2 weeks', owners:'Razam Sir: build. Arman Hussain: recruits 10 test users and collects voice samples.', budget:'≈ ₹15,000', depends:'Gate G0; LinkedIn Sign In enabled',
+      goal:'Build the app skeleton, sign-in, onboarding and the writing engine so a new user gets a draft in their own voice.',
+      wps:['Next.js and Supabase projects; development, staging and production environments; GitHub branch rules','14 core tables with row-level security on every table; audit_log and ai_usage logging from day one','Sign-in (A1, A2) with encrypted LinkedIn token storage','Onboarding screens (A3, A4) and LinkedIn data-export parser','Voice Engine (B1, B2) with the prompt library under version control','Writer (C1, C2, C3) with a banned-phrase check on every output','Quality test set: 10 users\' real posts, a 5-point voice rubric and a scoring script'],
+      gate:['All 9 features meet their acceptance criteria','10 test users each reach a draft in under 5 minutes','7 of 10 test users rate voice match 4 or 5 out of 5','Row-level security verified on every table'],
+      risk:'Drafts sound generic. Spend up to 3 extra days on prompts and the voice profile; scope does not change.' },
+    { n:2, name:'Core product', dates:'9–29 Nov 2026', weeks:'3 weeks', owners:'Razam Sir: build, extension, security. Arman Hussain: Razorpay activation, GST invoice format with the CA, Circle rules.', budget:'≈ ₹45,000', depends:'Gate G1; LinkedIn Share scope working',
+      goal:'Finish the writer, add scheduling, Circles, the Chrome extension, billing and admin, then pass a security review.',
+      wps:['Week 1: writer complete (A5, C4, C5, C6)','Week 1: calendar and publishing job with retries (D1, D2), tested on 2 internal accounts','Week 2: Circles (E1–E4) and 3 starter Circles','Week 2: Chrome extension (F1, F2) loaded unpacked for testing','Week 3: billing (K1–K4) in test mode, then live ₹1 and $1 payment and refund','Week 3: admin and safety (L1, L2, N1); rate limits on every route','Week 3: external security review; fix all high and critical findings; clean Hakscan run','Regression pass on all 9 Phase 1 features'],
+      gate:['All 19 features accepted and Phase 1 still passes','100 scheduled test posts publish with ≥ 99% success','Live payments and refunds work in INR and USD','Zero open high or critical security findings'],
+      risk:'The tightest phase. The end date can move by up to a week; nothing is cut.' },
+    { n:3, name:'Private beta', dates:'30 Nov–27 Dec 2026', weeks:'4 weeks', owners:'Arman Hussain: recruitment, onboarding calls, support. Razam Sir: fixes, M3, store submission.', budget:'≈ ₹30,000', depends:'Gate G2',
+      goal:'Put the product in the hands of 50 real users, fix what breaks, get the extension approved and build the free SEO tools.',
+      wps:['Invite 50 users into 3 starter Circles (about 17 each)','20-minute onboarding call per Circle; publish a WhatsApp support number','Weekly Friday releases with bug fixes only','Weekly 5-question survey and 10 one-to-one calls; log every issue','Submit the extension to the Chrome Web Store in week 1','Build M3: 5 free tools and 50 programmatic pages; submit the sitemap','Help centre: one note per launch feature, FAQ, account-safety page','Launch kit: Product Hunt page, launch posts, 3 waitlist emails, founding code for 200 uses'],
+      gate:['50 beta users onboarded','60% of beta users publish 2+ posts a week for the last 2 weeks','Chrome extension approved and listed','M3 accepted; zero open critical bugs; no account restrictions reported','20 beta users agree to pay at launch'],
+      risk:'Users try it once and stop. Fix onboarding and voice quality inside existing features; extend beta by up to 2 weeks.' },
+    { n:4, name:'Public launch', dates:'28 Dec 2026–5 Jan 2027', weeks:'Launch 5 Jan', owners:'Razam Sir: systems and monitoring. Arman Hussain: launch outreach and support.', budget:'≈ ₹20,000', depends:'Gate G3', launch:true,
+      goal:'Switch everything to production, open sign-ups and run the launch. No new features.',
+      wps:['Production readiness: tested backup restore, uptime monitoring, error alerts to both phones, status page','Payments live; founding-member code active for the first 200 yearly plans','Launch day 5 Jan: founder posts, Product Hunt, founder communities, waitlist emails in 3 batches','Support rota: replies within 4 business hours; daily bug triage at 7 PM IST','Day-1 and day-7 review notes'],
+      gate:['Product public and billing live','10 paying accounts in the first 7 days','Zero open critical bugs for 7 days','No account restriction caused by the product'],
+      risk:'Launch-day outage. Batched emails keep load gradual; founder posts can slip a day.' },
+    { n:5, name:'V1 growth release', dates:'6 Jan–31 Mar 2027', weeks:'12 weeks', owners:'Razam Sir: build. Arman Hussain: agency sales, affiliates, support.', budget:'≈ ₹1,20,000', depends:'Gate G4; G1 also needs API approval',
+      goal:'Improve quality, open the agency market and switch on referral growth while supporting paying customers.',
+      wps:['Sprint 5A (6 Jan–2 Feb): B3, B4, C7, C8, I1, I2','Sprint 5B (3 Feb–2 Mar): J1, J2, J4, E5, E6, F3, F4, N2','Sprint 5C (3–31 Mar): H1, H2, H4, D3, D4, D5, G1, M1, M2','Support within 4 business hours; monthly top-10 issue review','Onboard 5 pilot agencies, including QivaLabs clients','Sign 20 affiliates','100 more programmatic pages and 4 comparison pages','In-app annual-plan offer in month 2 of every monthly plan'],
+      gate:['All 23 features accepted (G1 may be "Blocked: compliance")','30 paying accounts','Monthly logo churn under 8%','3 agencies on the Agency plan'],
+      risk:'Support load slows the build. Arman takes first-line support; sprint dates move, scope does not.' },
+    { n:6, name:'V2 scale release', dates:'1 Apr–30 Jun 2027', weeks:'13 weeks', owners:'Razam Sir: build. Arman Hussain: company-page sales, agency reports, support hire.', budget:'≈ ₹2,00,000', depends:'Gate G5; G2 and G3 need API approval',
+      goal:'Finish company-page and agency reporting, add deeper analytics and harden for scale. Closes Scope v1.0.',
+      wps:['Sprint 6A (April): H3, C9, F5','Sprint 6B (May): G2, G3, J3','Sprint 6C (June): D6, performance tuning, load test at 5× users, security re-review','Hire part-time customer success once MRR passes ₹2 lakh','Marketing ₹50,000 a month from June; ads only if payback is under 3 months','Scope v1.0 close-out report; open the parking lot; draft Scope v2.0'],
+      gate:['All 7 features accepted (G2, G3 may be "Blocked: compliance")','120 paying accounts','MRR at least ₹2.2 lakh','Gross margin at least 80%'],
+      risk:'Company-page API approval never arrives. G2 and G3 are recorded as blocked; no substitute feature is added.' }
+  ];
+
+  const STATUSES = ['Not started', 'In progress', 'Accepted', 'Blocked: compliance'];
+  let status = load('qr_feature_status', {});
+  let checks = load('qr_phase_checks', {});
+  let current = load('qr_phase_current', 0);
+  const st = id => status[id] || 'Not started';
+  const featsOf = n => FEATURES.filter(f => f.phase === n);
+
+  /* ---------- phase track ---------- */
+  const track = $('#phaseTrack'), detail = $('#phaseDetail');
+  const progressOf = p => {
+    const fs = featsOf(p.n);
+    const items = [...p.wps.map((_, i) => `w${i}`), ...p.gate.map((_, i) => `g${i}`)];
+    const done = fs.filter(f => st(f.id) === 'Accepted').length + items.filter(k => (checks[p.n] || {})[k]).length;
+    return done / (fs.length + items.length);
+  };
+  const renderTrack = () => {
+    track.innerHTML = PHASES.map(p => {
+      const fs = featsOf(p.n).length;
+      return `<button class="ph-btn${p.launch ? ' launch' : ''}" role="tab" aria-selected="${p.n === current}" data-ph="${p.n}">
+        <span class="n">Phase ${p.n}</span><span class="t">${esc(p.name)}</span><span class="d">${esc(p.dates)}</span>
+        <span class="d">${fs ? fs + ' feature' + (fs > 1 ? 's' : '') : 'No features'}</span>
+        <span class="ph-bar" aria-hidden="true"><i style="width:${Math.round(progressOf(p) * 100)}%"></i></span></button>`;
+    }).join('');
+  };
+  const renderDetail = () => {
+    const p = PHASES[current], c = checks[p.n] || {}, fs = featsOf(p.n);
+    detail.innerHTML = `
+      <div class="pd-head"><div><h3>Phase ${p.n}: ${esc(p.name)}</h3><p>${esc(p.goal)}</p></div>
+        <span class="muted" style="font-size:14px">${Math.round(progressOf(p) * 100)}% complete</span></div>
+      <div class="pd-meta">
+        <div><b>Dates</b><span>${esc(p.dates)}</span></div>
+        <div><b>Duration</b><span>${esc(p.weeks)}</span></div>
+        <div><b>Budget</b><span>${esc(p.budget)}</span></div>
+        <div><b>Depends on</b><span>${esc(p.depends)}</span></div>
+      </div>
+      <p style="font-size:15px;margin-bottom:22px"><b>Owners.</b> ${esc(p.owners)}</p>
+      <div class="pd-cols">
+        <div><h4>Work packages</h4><ul class="checks">${p.wps.map((w, i) => `<li><label><input type="checkbox" data-k="w${i}" ${c['w' + i] ? 'checked' : ''}><span>${esc(w)}</span></label></li>`).join('')}</ul></div>
+        <div><h4>Exit gate G${p.n}</h4><ul class="checks">${p.gate.map((g, i) => `<li><label><input type="checkbox" data-k="g${i}" ${c['g' + i] ? 'checked' : ''}><span>${esc(g)}</span></label></li>`).join('')}</ul>
+          <h4 style="margin-top:22px">Features in this phase (${fs.length})</h4>
+          ${fs.length ? `<div class="pd-feats">${fs.map(f => `<button type="button" data-goto="${f.id}" class="${st(f.id) === 'Accepted' ? 'ok' : ''}" title="${esc(f.name)}: ${esc(st(f.id))}">${f.id} ${esc(f.name)}</button>`).join('')}</div>` : '<p class="muted" style="font-size:15px">None. This phase delivers work packages only.</p>'}
+        </div>
+      </div>
+      <div class="pd-risk"><b>Main risk.</b> ${esc(p.risk)}</div>`;
+  };
+  track.addEventListener('click', e => { const b = e.target.closest('[data-ph]'); if (!b) return; current = +b.dataset.ph; save('qr_phase_current', current); renderTrack(); renderDetail(); });
+  track.addEventListener('keydown', e => {
+    if (!['ArrowRight', 'ArrowLeft'].includes(e.key)) return;
+    current = (current + (e.key === 'ArrowRight' ? 1 : PHASES.length - 1)) % PHASES.length;
+    save('qr_phase_current', current); renderTrack(); renderDetail(); track.querySelector(`[data-ph="${current}"]`).focus();
+  });
+  detail.addEventListener('change', e => {
+    const k = e.target.dataset.k; if (!k) return;
+    checks[current] = { ...(checks[current] || {}), [k]: e.target.checked }; save('qr_phase_checks', checks); renderTrack();
+    detail.querySelector('.pd-head .muted').textContent = Math.round(progressOf(PHASES[current]) * 100) + '% complete';
+  });
+  detail.addEventListener('click', e => {
+    const b = e.target.closest('[data-goto]'); if (!b) return;
+    $('#regSearch').value = b.dataset.goto; $('#regPhase').value = 'all'; $('#regStatus').value = 'all'; renderRegister();
+    $('#register').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+
+  /* ---------- register ---------- */
+  $('#regPhase').innerHTML = '<option value="all">All phases</option>' + [1, 2, 3, 5, 6].map(n => `<option value="${n}">Phase ${n} (${featsOf(n).length})</option>`).join('');
+  $('#regStatus').innerHTML = '<option value="all">All statuses</option>' + STATUSES.map(s => `<option>${s}</option>`).join('');
+  const renderSummary = () => {
+    const count = s => FEATURES.filter(f => st(f.id) === s).length;
+    const launch = FEATURES.filter(f => f.phase <= 3), launchDone = launch.filter(f => st(f.id) === 'Accepted').length;
+    $('#regSum').innerHTML = `
+      <div><b>${FEATURES.length}</b><span>features locked in Scope v1.0</span></div>
+      <div><b>${count('Accepted')}</b><span>accepted</span></div>
+      <div><b>${count('In progress')}</b><span>in progress</span></div>
+      <div><b>${launchDone}/${launch.length}</b><span>launch features accepted</span></div>`;
+  };
+  const renderRegister = () => {
+    const q = $('#regSearch').value.trim().toLowerCase(), ph = $('#regPhase').value, sf = $('#regStatus').value;
+    const rows = FEATURES.filter(f => (ph === 'all' || f.phase === +ph) && (sf === 'all' || st(f.id) === sf) &&
+      (!q || [f.id, f.name, f.module, f.crit].join(' ').toLowerCase().includes(q)));
+    $('#regBody').innerHTML = rows.length ? rows.map(f => `<tr>
+      <td class="id">${f.id}</td><td><b>${esc(f.name)}</b></td><td>${esc(f.module)}</td><td class="ph">Phase ${f.phase}</td>
+      <td class="crit">${esc(f.crit)}</td>
+      <td><label class="sr-only" for="s-${f.id}">Status of ${f.id}</label><select id="s-${f.id}" data-id="${f.id}" data-s="${st(f.id)}">${STATUSES.map(s => `<option${s === st(f.id) ? ' selected' : ''}>${s}</option>`).join('')}</select></td></tr>`).join('')
+      : '<tr><td colspan="6" class="reg-empty">No features match. Clear the search or filters to see all 59.</td></tr>';
+    $('#regCount').textContent = `Showing ${rows.length} of ${FEATURES.length} features.`;
+    renderSummary();
+  };
+  ['regSearch', 'regPhase', 'regStatus'].forEach(id => $('#' + id).addEventListener('input', renderRegister));
+  $('#regBody').addEventListener('change', e => {
+    const id = e.target.dataset.id; if (!id) return;
+    status[id] = e.target.value; e.target.dataset.s = e.target.value; save('qr_feature_status', status);
+    renderSummary(); renderTrack(); renderDetail();
+  });
+  $('#regCsv').addEventListener('click', () => {
+    const q = v => `"${String(v).replace(/"/g, '""')}"`;
+    const csv = ['ID,Feature,Module,Phase,Acceptance criteria,Status', ...FEATURES.map(f => [f.id, f.name, f.module, 'Phase ' + f.phase, f.crit, st(f.id)].map(q).join(','))].join('\n');
+    const url = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv' }));
+    const a = Object.assign(document.createElement('a'), { href: url, download: 'qiva-reach-feature-register.csv' });
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+  $('#regReset').addEventListener('click', () => {
+    if (!confirm('Reset every feature status to "Not started" in this browser?')) return;
+    status = {}; save('qr_feature_status', status); renderRegister(); renderTrack(); renderDetail();
+  });
+
+  renderTrack(); renderDetail(); renderRegister();
+})();
+</script>
+</body>
+</html>
