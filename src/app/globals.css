@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* Brand tokens: company-brain/05-brand.md */
+:root {
+  --ink: #1b1f3b;
+  --porcelain: #f3f5f4;
+  --marigold: #f2a900;
+  --marigold-soft: #ffe8a8;
+  --peacock: #00645a;
+  --peacock-soft: #d4ece6;
+  --slate: #5d6475;
+  --sindoor: #c8331e;
+  --line: #d9dedc;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-porcelain: var(--porcelain);
+  --color-marigold: var(--marigold);
+  --color-marigold-soft: var(--marigold-soft);
+  --color-peacock: var(--peacock);
+  --color-peacock-soft: var(--peacock-soft);
+  --color-slate: var(--slate);
+  --color-sindoor: var(--sindoor);
+  --color-line: var(--line);
+  --font-sans: var(--font-figtree);
+  --font-display: var(--font-bricolage);
+  --radius-control: 12px;
+  --radius-card: 20px;
+}
+
+body {
+  background: var(--porcelain);
+  color: var(--ink);
+  font-family: var(--font-figtree), system-ui, sans-serif;
+  font-size: 17px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+:focus-visible {
+  outline: 4px solid var(--marigold-soft);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
