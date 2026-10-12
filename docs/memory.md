@@ -20,6 +20,8 @@
 
 - [x] A3 goal and niche (onboarding step 1 + settings; verified live), 4 unit and 4 e2e tests pass, RLS checked — 13 Oct 2026
 
+- [x] A4 voice import (paste, Shares.csv, zip; dedupe; skip; empty state), 12 unit and 7 e2e tests pass — 13 Oct 2026
+
 ## Remaining
 - Specs B1, B2, C1, C2, C3, A1; accounts; A2 build; Playwright setup; quality test set.
 

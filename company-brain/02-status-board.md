@@ -33,6 +33,7 @@ Updated by whoever changes something. Keep it short; history goes in the logs.
 
 | ID | Status | Note |
 |---|---|---|
+| A4 | In progress | Built; PostHog event, help note and a real LinkedIn export check still to do |
 | A3 | In progress | Built and live on preview; PostHog event and help note still to add |
 | A2 | In progress | Email magic-link sign-in built and live; Google sign-in waiting for the Google OAuth client |
 

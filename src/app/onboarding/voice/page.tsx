@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Wordmark } from "@/components/wordmark";
+import { VoiceImport } from "./voice-import";
 
 export default function VoiceStep() {
   return (
@@ -7,8 +7,8 @@ export default function VoiceStep() {
       <Wordmark />
       <p className="text-sm text-slate">Step 2 of 2</p>
       <h1 className="text-3xl font-bold">Teach us your voice</h1>
-      <p className="text-slate">Pasting your past posts comes next. For now, your goal and niche are saved.</p>
-      <Link href="/app" className="underline">Go to the app</Link>
+      <div className="border-t-2 border-dashed border-marigold" aria-hidden />
+      <VoiceImport />
     </main>
   );
 }
