@@ -1,18 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { createClient } from "@supabase/supabase-js";
-
-const admin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-  { auth: { persistSession: false } },
-);
-
-// Generates a real magic link without sending an email.
-async function magicLinkFor(email: string) {
-  const { data, error } = await admin.auth.admin.generateLink({ type: "magiclink", email });
-  if (error) throw error;
-  return `/auth/callback?token_hash=${data.properties.hashed_token}&type=email`;
-}
+import { admin, magicLink } from "./helpers";
 
 test("invalid email shows a clear error", async ({ page }) => {
   await page.goto("/sign-in");
@@ -39,7 +26,7 @@ test("magic link: new user -> onboarding, returning user -> app; one workspace +
   const email = `a2-test-${Date.now()}@example.com`;
   let userId = "";
   try {
-    await page.goto(await magicLinkFor(email));
+    await page.goto((await magicLink(email)).path);
     await expect(page).toHaveURL(/\/onboarding$/);
 
     const { data: users } = await admin.auth.admin.listUsers({ perPage: 200 });
@@ -54,7 +41,7 @@ test("magic link: new user -> onboarding, returning user -> app; one workspace +
 
     await admin.from("profiles").update({ onboarded_at: new Date().toISOString() }).eq("id", userId);
     await page.context().clearCookies();
-    await page.goto(await magicLinkFor(email));
+    await page.goto((await magicLink(email)).path);
     await expect(page).toHaveURL(/\/app$/);
     await expect(page.getByText(`Signed in as ${email}`)).toBeVisible();
 
