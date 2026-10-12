@@ -11,8 +11,8 @@ Status: Open (CFO researches with sources; founders confirm with the company's C
 
 ### Q-002 · 12 Oct 2026 · CMO → CTO
 When will a clickable demo of the post writer exist, for beta-invite emails and LinkedIn content?
-Answer: —  
-Status: Open
+Answer: About 2 Nov 2026 (Checkpoint 3) for a clickable writer on a preview link. A smaller voice-import-to-draft demo may be ready about 28 Oct. Estimates, depend on voice quality and on Supabase/Vercel accounts being ready. (CTO, 12 Oct)  
+Status: Closed
 
 ### Q-003 · 12 Oct 2026 · CTO → Founders
 LinkedIn developer app: who creates it under the QivaLabs LinkedIn company page, and when? Phase 1 sign-in needs its client ID and secret.
