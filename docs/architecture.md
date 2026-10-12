@@ -6,7 +6,7 @@
 - Backend/DB: Supabase (Postgres, Auth, RLS), Mumbai region; separate project from the waitlist
 - AI: Anthropic SDK, server only (added with C1)
 - Email: Resend · Analytics: PostHog · Errors: Sentry
-- Hosting: Vercel (app on `app.qivareach.com` later)
+- Hosting: Vercel, functions pinned to Mumbai (`vercel.json`, bom1) next to Supabase to cut database latency (app on `app.qivareach.com` later)
 - Tests: Vitest (logic), Playwright (acceptance, added with the first feature)
 
 ## High-Level Workflow

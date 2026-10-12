@@ -7,6 +7,7 @@ const live = process.env.PLAYWRIGHT_BASE_URL;
 
 export default defineConfig({
   testDir: "tests/e2e",
+  expect: { timeout: live ? 15_000 : 5_000 },
   use: { baseURL: live ?? "http://localhost:3000" },
   webServer: live ? undefined : { command: "npm run dev", url: "http://localhost:3000", reuseExistingServer: true },
 });
