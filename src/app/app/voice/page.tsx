@@ -34,6 +34,7 @@ export default async function VoicePage() {
             emoji_use: voice?.emoji_use ?? "light",
             signature_phrases: voice?.signature_phrases ?? [],
             banned_phrases: voice?.banned_phrases ?? [],
+            preset: voice?.preset ?? null,
           }}
         />
       )}

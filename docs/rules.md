@@ -26,3 +26,6 @@ Next.js, React, Tailwind, `@supabase/ssr`, `@supabase/supabase-js`, Anthropic SD
 
 ## Code Conventions
 TypeScript strict. Sentence-case copy. Plain English in code and commits. Comments only for non-obvious "why".
+
+## Tests that call the real model
+`tests/gen-preset-fixtures.test.ts` records real outputs on demand (`GEN_FIXTURES=1`). Re-record after any change to `src/ai/prompts/presets.v1.ts`, then run `npm test`.
