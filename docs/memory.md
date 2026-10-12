@@ -16,11 +16,13 @@
 - [x] Supabase project `qiva-reach-app` created, migration applied, 14 tables checked — 13 Oct 2026
 - [x] A2 email magic-link sign-in, /app and /onboarding protected, 5 Playwright tests pass — 13 Oct 2026
 
+- [x] Vercel project `qiva-reach-app` live at https://qiva-reach-app.vercel.app; Supabase redirect URLs added (prod + preview wildcard) — 13 Oct 2026
+
 ## Remaining
 - Specs B1, B2, C1, C2, C3, A1; accounts; A2 build; Playwright setup; quality test set.
 
 ## Blockers
-- Vercel project, Google OAuth client, Resend (Supabase built-in email is limited to a few emails an hour), PostHog, Anthropic key, LinkedIn app (Q-003).
+- Google OAuth client, Resend (Supabase built-in email is limited to a few emails an hour), PostHog, Anthropic key, LinkedIn app (Q-003).
 
 ## Decisions Log
 - 12 Oct 2026: Next 16 uses `proxy.ts` instead of `middleware.ts`.

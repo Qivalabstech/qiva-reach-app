@@ -2,7 +2,7 @@
 
 Updated by whoever changes something. Keep it short; history goes in the logs.
 
-**Last updated:** 12 Oct 2026 by CTO (Claude)
+**Last updated:** 13 Oct 2026 by CTO (Claude)
 
 ## Where we are
 
@@ -16,6 +16,7 @@ Updated by whoever changes something. Keep it short; history goes in the logs.
 | Paying customers / MRR | 0 / $0 |
 | LinkedIn developer app | Not created yet (Phase 0 WP 0.4) |
 | LinkedIn Community Management API | Not applied for yet |
+| App (Vercel) | Live at https://qiva-reach-app.vercel.app (email sign-in). Vercel project `qiva-reach-app`, Supabase project `qiva-reach-app` (Mumbai) |
 | Product repository | Created: private `Qivalabstech/qiva-reach-app`. Skeleton and core migration on branch `feat/foundation-skeleton` |
 | Google Search Console | Property added, sitemap submitted 11 Oct 2026 |
 
@@ -32,19 +33,19 @@ Updated by whoever changes something. Keep it short; history goes in the logs.
 
 | ID | Status | Note |
 |---|---|---|
-| — | — | Nothing started yet |
+| A2 | In progress | Email magic-link sign-in built and live; Google sign-in waiting for the Google OAuth client |
 
 Statuses: Not started · In progress · Accepted · Blocked: compliance
 
 ## Blockers
 
-- Supabase project, Vercel project, Google OAuth client, Anthropic key (founders)
-- Arman Hussain approval of D-008 and of specs A2, A3, A4
+- Google OAuth client, Resend account, PostHog, Anthropic key (founders)
+- Arman Hussain approval of D-008
 
 ## Each executive's current focus
 
 | Role | Focus this week |
 |---|---|
-| CTO | Checkpoint 1: skeleton and database done locally; waiting for Supabase and Vercel projects and approval of specs A2, A3, A4 |
+| CTO | Checkpoint 1 nearly done (skeleton, database, email sign-in live). Next: A3, A4; Google sign-in |
 | CMO | Waitlist launch, daily LinkedIn content, path to 300 signups |
 | CFO | LLP vs Private Limited check, 24-month model, investor shortlist |
