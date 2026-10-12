@@ -17,13 +17,14 @@ export default async function AppHome() {
       <h1 className="text-3xl font-bold">Welcome{profile?.full_name ? `, ${profile.full_name}` : ""}</h1>
       <p className="text-slate">Signed in as {user?.email}.</p>
       {imported ? (
-        <p>{imported} of your posts imported. Your voice profile comes next.</p>
+        <p>{imported} of your posts imported. <Link href="/app/voice" className="underline">Check your voice</Link></p>
       ) : (
         <p>
           No drafts yet. Paste a few old posts and we&apos;ll learn your voice.{" "}
           <Link href="/onboarding/voice" className="underline">Add posts</Link>
         </p>
       )}
+      <Link href="/app/voice" className="underline">Your voice</Link>
       <Link href="/app/settings" className="underline">Settings</Link>
       <form action={signOut}>
         <button className="rounded-control border border-ink px-4 py-3 font-display font-semibold">

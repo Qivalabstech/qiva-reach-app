@@ -14,7 +14,8 @@
 2. Server code uses the Supabase server client (user session, RLS applies).
 3. Privileged work (AI usage logging, audit log, LinkedIn tokens) uses the service-role key on the server only.
 4. `src/proxy.ts` refreshes the Supabase session cookie on every request.
-5. Every AI call: build prompt from `src/ai/prompts/` + voice profile + user posts, call Anthropic, banned-phrase check, log to `ai_usage`.
+5. All model calls go through `src/ai/client.ts` (`askModel`), which logs tokens and cost to `ai_usage`. Prices are in that file with their source and date.
+6. Every AI call: build prompt from `src/ai/prompts/` + voice profile + user posts, call Anthropic, banned-phrase check, log to `ai_usage`.
 
 ## Folder & File Structure
 ```

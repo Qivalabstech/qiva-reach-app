@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { MIN_POSTS, MIN_POSTS_MESSAGE, TOO_LONG_MESSAGE, duplicateKey, selectPosts } from "@/lib/voice-import";
 import { supabaseServer } from "@/lib/supabase/server";
+import { runVoiceAnalysis } from "@/lib/voice-analysis";
 
 async function finishOnboarding() {
   const supabase = await supabaseServer();
@@ -41,7 +42,9 @@ export async function importVoicePosts(raw: string[]): Promise<{ error: string }
     if (error) return { error: "We couldn't save your posts. Check your connection and try again." };
   }
   await supabase.from("profiles").update({ onboarded_at: new Date().toISOString() }).eq("id", user.id);
-  redirect("/app");
+  // Learn the voice now so the profile is ready on the next screen. If it fails, the user can retry there.
+  await runVoiceAnalysis(supabase, user.id).catch(() => null);
+  redirect("/app/voice");
 }
 
 export async function skipVoiceImport() {
