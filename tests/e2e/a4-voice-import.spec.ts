@@ -36,8 +36,8 @@ test("5 pasted posts import, finish onboarding, and re-importing skips duplicate
     await page.getByLabel(/Paste your past posts/).fill(paste(5));
     await expect(page.getByText("5 posts found")).toBeVisible();
     await page.getByRole("button", { name: "Learn my voice" }).click();
-    await expect(page).toHaveURL(/\/app$/);
-    await expect(page.getByText("5 of your posts imported")).toBeVisible();
+    await expect(page).toHaveURL(/\/app\/voice$/);
+    await expect(page.getByRole("heading", { name: "Your voice" })).toBeVisible();
     expect(await importedCount(u.id)).toBe(5);
     const p = (await admin.from("profiles").select("onboarded_at").eq("id", u.id).single()).data;
     expect(p?.onboarded_at).not.toBeNull();
@@ -45,7 +45,7 @@ test("5 pasted posts import, finish onboarding, and re-importing skips duplicate
     await page.goto("/onboarding/voice");
     await page.getByLabel(/Paste your past posts/).fill(paste(7));
     await page.getByRole("button", { name: "Learn my voice" }).click();
-    await expect(page).toHaveURL(/\/app$/);
+    await expect(page).toHaveURL(/\/app\/voice$/);
     expect(await importedCount(u.id)).toBe(7);
   } finally {
     await admin.auth.admin.deleteUser(u.id);
@@ -63,7 +63,7 @@ test("Shares.csv and its zip both import", async ({ page }) => {
     await page.getByLabel(/Upload Shares.csv/).setInputFiles({ name: "Shares.csv", mimeType: "text/csv", buffer: Buffer.from(csv) });
     await expect(page.getByText("6 posts found")).toBeVisible();
     await page.getByRole("button", { name: "Learn my voice" }).click();
-    await expect(page).toHaveURL(/\/app$/);
+    await expect(page).toHaveURL(/\/app\/voice$/);
     expect(await importedCount(u.id)).toBe(6);
     const body = (await admin.from("posts").select("body").eq("author_id", u.id).like("body", "Post 3:%").single()).data?.body;
     expect(body).toContain("A second line, with a comma.");
@@ -91,7 +91,7 @@ test("imported posts are invisible to other users (RLS)", async ({ page }) => {
   try {
     await page.getByLabel(/Paste your past posts/).fill(paste(4));
     await page.getByRole("button", { name: "Learn my voice" }).click();
-    await expect(page).toHaveURL(/\/app$/);
+    await expect(page).toHaveURL(/\/app\/voice$/);
 
     const b = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, { auth: { persistSession: false } });
     await b.auth.verifyOtp({ type: "email", token_hash: (await magicLink(emailB)).tokenHash });

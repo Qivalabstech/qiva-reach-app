@@ -3,7 +3,7 @@
 Full operating manual: `CLAUDE.md`. Short version for builders:
 
 ## Approved Libraries
-Next.js, React, Tailwind, `@supabase/ssr`, `@supabase/supabase-js`, Anthropic SDK, Vitest, Playwright, Resend, PostHog, Sentry, fflate (unzip LinkedIn export in the browser).
+Next.js, React, Tailwind, `@supabase/ssr`, `@supabase/supabase-js`, Anthropic SDK, Vitest, Playwright, Resend, PostHog, Sentry, fflate (unzip LinkedIn export in the browser), @anthropic-ai/sdk (server only).
 
 ## Avoid
 - Any new dependency without listing it first and a reason.
@@ -21,6 +21,7 @@ Next.js, React, Tailwind, `@supabase/ssr`, `@supabase/supabase-js`, Anthropic SD
 - Do not: print or commit secrets. Keys live in `.env.local` and Vercel only.
 - Always: one branch per feature (`feat/<ID>-name`), spec approved before build.
 - Always: RLS on every new table; log AI calls to `ai_usage`.
+- Never set `AI_STUB` in production. It makes model calls return a fixed reply and exists only for local tests.
 - Always: update `docs/memory.md` after each feature, and end sessions with a BRAIN UPDATE.
 
 ## Code Conventions
