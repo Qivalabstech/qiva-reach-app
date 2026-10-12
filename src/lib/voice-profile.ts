@@ -1,3 +1,5 @@
+import { isPreset, type Preset } from "@/lib/presets";
+
 export const TONE_MAX = 200;
 export const LENGTH_MIN = 20;
 export const LENGTH_MAX = 400;
@@ -61,6 +63,7 @@ export type VoiceInput = {
   emoji_use: EmojiUse;
   signature_phrases: string[];
   banned_phrases: string[];
+  preset: Preset | null;
 };
 
 export function validateVoice(input: unknown):
@@ -81,6 +84,7 @@ export function validateVoice(input: unknown):
       emoji_use: v.emoji_use as EmojiUse,
       signature_phrases: cleanPhrases(v.signature_phrases, SIGNATURE_MAX),
       banned_phrases: cleanPhrases(v.banned_phrases, BANNED_MAX),
+      preset: isPreset(v.preset) ? v.preset : null,
     },
   };
 }

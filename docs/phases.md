@@ -12,7 +12,7 @@
 - [x] A3 goal and niche (built, tested)
 - [x] A4 voice import (built, tested)
 - [x] B1 voice profile (built, tested)
-- [ ] B2 tone presets
+- [x] B2 tone presets (built, tested; blind test pending)
 
 ## Checkpoint 3: Writer (~2 Nov)
 - [ ] C1 ideas · C2 post writer · C3 hook lab · quality test set and first score report

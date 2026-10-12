@@ -25,6 +25,8 @@
 - [x] B1 voice profile: counted length and emoji, Haiku 5.5 tone and signature phrases, editable, relearn, 5-a-day limit, ai_usage logging; 25 unit and 22 e2e tests pass with stubbed AI — 13 Oct 2026
 - [x] Anthropic key set locally and on Vercel; models `claude-haiku-5-5` (fast) and `claude-sonnet-5-5` (writer) — 13 Oct 2026
 
+- [x] B2 tone presets: five presets, picker on the voice page, compare page, banned and invented-number checks, daily limit; automated "visibly different" checks on recorded real samples; blind-test files for Arman — 13 Oct 2026
+
 ## Remaining
 - Specs B1, B2, C1, C2, C3, A1; accounts; A2 build; Playwright setup; quality test set.
 

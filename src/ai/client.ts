@@ -20,12 +20,21 @@ export type AskArgs = {
 
 const STUB_REPLY = '{"tone":"direct, warm, short sentences","signature_phrases":["Here is the thing"]}';
 
+function stubReply(a: AskArgs): string {
+  if (a.feature !== "preset_preview") {
+    if (a.user.includes("AI_STUB_FAIL")) throw new Error("stubbed failure");
+    return STUB_REPLY;
+  }
+  const id = a.system.match(/Preset id: (\w+)/)?.[1] ?? "unknown";
+  if (a.user.includes(`AI_STUB_FAIL_${id}`)) throw new Error("stubbed failure");
+  return `Stub sample for ${id}. This is a short placeholder post.`;
+}
+
 // One place that calls the model and logs tokens and cost to ai_usage.
 export async function askModel(a: AskArgs): Promise<string> {
   // Test-only switch. Never set AI_STUB in production.
   if (process.env.AI_STUB === "1") {
-    if (a.user.includes("AI_STUB_FAIL")) throw new Error("stubbed failure");
-    return STUB_REPLY;
+    return stubReply(a);
   }
 
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });

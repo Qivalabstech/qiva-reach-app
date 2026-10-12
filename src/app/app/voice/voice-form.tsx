@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import Link from "next/link";
 import { PhraseList } from "@/components/phrase-list";
+import { PRESETS, type Preset } from "@/lib/presets";
 import { BANNED_MAX, EMOJI_USES, LENGTH_MAX, LENGTH_MIN, SIGNATURE_MAX, TONE_MAX, type EmojiUse } from "@/lib/voice-profile";
 import { learnAgain, saveVoice, type VoiceResult } from "./actions";
 
@@ -11,6 +13,7 @@ export type VoiceValues = {
   emoji_use: EmojiUse;
   signature_phrases: string[];
   banned_phrases: string[];
+  preset: Preset | null;
 };
 
 const EMOJI_LABEL: Record<EmojiUse, string> = { none: "None", light: "Light", frequent: "Frequent" };
@@ -77,6 +80,30 @@ export function VoiceForm({ initial, analyzed }: { initial: VoiceValues; analyze
             </label>
           ))}
         </div>
+      </fieldset>
+
+      <fieldset className="flex flex-col gap-2">
+        <legend className="mb-1 text-sm font-semibold">Tone preset</legend>
+        <p className="text-sm text-slate">A style for the shape of your posts. Your own voice still decides the words.</p>
+        {[{ value: null, label: "No preset, just my voice", blurb: "" }, ...PRESETS].map((p) => (
+          <label
+            key={p.value ?? "none"}
+            className="flex cursor-pointer items-start gap-3 rounded-card border border-line bg-white p-4 has-[:checked]:border-2 has-[:checked]:border-ink has-[:focus-visible]:outline-4 has-[:focus-visible]:outline-marigold-soft"
+          >
+            <input
+              type="radio"
+              name="preset"
+              checked={v.preset === p.value}
+              onChange={() => set("preset", p.value)}
+              className="mt-1 size-5 accent-ink"
+            />
+            <span>
+              <span className="block font-semibold">{p.label}</span>
+              {p.blurb && <span className="block text-sm text-slate">{p.blurb}</span>}
+            </span>
+          </label>
+        ))}
+        <Link href="/app/voice/presets" className="text-sm underline">Compare all five on one topic</Link>
       </fieldset>
 
       <PhraseList
