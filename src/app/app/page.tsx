@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { supabaseServer } from "@/lib/supabase/server";
 import { Wordmark } from "@/components/wordmark";
 import { signOut } from "./actions";
@@ -11,6 +12,7 @@ export default async function AppHome() {
       <Wordmark />
       <h1 className="text-3xl font-bold">Welcome{profile?.full_name ? `, ${profile.full_name}` : ""}</h1>
       <p className="text-slate">Signed in as {user?.email}. Your drafts will appear here.</p>
+      <Link href="/app/settings" className="underline">Settings</Link>
       <form action={signOut}>
         <button className="rounded-control border border-ink px-4 py-3 font-display font-semibold">
           Sign out

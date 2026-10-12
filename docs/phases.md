@@ -9,7 +9,8 @@
 - [ ] A2 Google sign-in (needs Google OAuth client)
 
 ## Checkpoint 2: Onboarding and voice (~26 Oct)
-- [ ] A3 goal and niche · A4 voice import · B1 voice profile · B2 tone presets
+- [x] A3 goal and niche (built, tested)
+- [ ] A4 voice import · B1 voice profile · B2 tone presets
 
 ## Checkpoint 3: Writer (~2 Nov)
 - [ ] C1 ideas · C2 post writer · C3 hook lab · quality test set and first score report
