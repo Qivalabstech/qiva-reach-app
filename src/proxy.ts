@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-// Keeps the Supabase session cookie fresh. Route protection is added with the sign-in feature (A2).
+// Keeps the Supabase session cookie fresh. Also sends signed-out visitors away from /app and /onboarding.
 export async function proxy(request: NextRequest) {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -18,7 +18,16 @@ export async function proxy(request: NextRequest) {
       },
     },
   });
-  await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  const path = request.nextUrl.pathname;
+  const signedOutOnly = path.startsWith("/app") || path.startsWith("/onboarding");
+  const target = !user && signedOutOnly ? "/sign-in" : user && path === "/sign-in" ? "/app" : null;
+  if (target) {
+    const redirect = NextResponse.redirect(new URL(target, request.url));
+    response.cookies.getAll().forEach((c) => redirect.cookies.set(c));
+    return redirect;
+  }
   return response;
 }
 

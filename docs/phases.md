@@ -3,9 +3,10 @@
 ## Checkpoint 1: Foundation (~19 Oct)
 - [x] Next.js app, brand tokens, fonts, strict TypeScript, build passes
 - [x] 14 core tables + RLS migration, tested locally for isolation
-- [ ] Supabase project created (needs Razam Sir) and migration applied
+- [x] Supabase project created and migration applied
 - [ ] Vercel preview link (needs Razam Sir)
-- [ ] A2 email magic link + Google sign-in (spec approval first)
+- [x] A2 email magic link (built, tested)
+- [ ] A2 Google sign-in (needs Google OAuth client)
 
 ## Checkpoint 2: Onboarding and voice (~26 Oct)
 - [ ] A3 goal and niche · A4 voice import · B1 voice profile · B2 tone presets
