@@ -18,7 +18,7 @@
 
 - [x] Vercel project `qiva-reach-app` live at https://qiva-reach-app.vercel.app; Supabase redirect URLs added (prod + preview wildcard) — 13 Oct 2026
 
-- [x] A3 goal and niche (onboarding step 1 + settings), 4 unit and 4 e2e tests pass, RLS checked — 13 Oct 2026
+- [x] A3 goal and niche (onboarding step 1 + settings; verified live), 4 unit and 4 e2e tests pass, RLS checked — 13 Oct 2026
 
 ## Remaining
 - Specs B1, B2, C1, C2, C3, A1; accounts; A2 build; Playwright setup; quality test set.
