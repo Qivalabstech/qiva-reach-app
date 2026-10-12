@@ -52,6 +52,6 @@ Statuses: Not started · In progress · Accepted · Blocked: compliance
 
 | Role | Focus this week |
 |---|---|
-| CTO | Checkpoint 1 nearly done (skeleton, database, email sign-in live). Next: C1–C3 writer specs and build |
+| CTO | Checkpoint 1 nearly done (skeleton, database, email sign-in live). Next: C1–C3 specs for approval; build C2, C3, then C1 |
 | CMO | Waitlist launch, daily LinkedIn content, path to 300 signups |
 | CFO | LLP vs Private Limited check, 24-month model, investor shortlist |
