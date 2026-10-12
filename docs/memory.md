@@ -31,3 +31,4 @@
 - 12 Oct 2026: Vitest installed with @types/node 22 (vitest 5 needs it).
 - 13 Oct 2026: `cacheComponents` turned off in next.config; every signed-in page is dynamic, so it only added friction.
 - 13 Oct 2026: Google button and PostHog events deferred until their accounts exist (nothing to wire yet).
+- 13 Oct 2026: Repo made PUBLIC by founder decision (Razam Sir) because Vercel Hobby blocks deployments from commits on private repos. The company-brain folder is public too. Make the repo private again when Vercel Pro is bought.

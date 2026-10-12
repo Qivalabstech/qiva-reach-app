@@ -40,6 +40,8 @@ Statuses: Not started · In progress · Accepted · Blocked: compliance
 
 ## Blockers
 
+- Repo `qiva-reach-app` is temporarily PUBLIC (Vercel Hobby limitation). Contains company-brain. Return to private after upgrading to Vercel Pro.
+
 - Google OAuth client, Resend account, PostHog, Anthropic key (founders)
 - Arman Hussain approval of D-008
 
