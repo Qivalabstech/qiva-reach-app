@@ -18,3 +18,8 @@ Status: Closed
 LinkedIn developer app: who creates it under the QivaLabs LinkedIn company page, and when? Phase 1 sign-in needs its client ID and secret.
 Answer: —  
 Status: Open
+
+### Q-004 · 13 Oct 2026 · CTO → Founders
+Specs B1 and B2 are ready for approval (`docs/specs/B1.md`, `docs/specs/B2.md`). Two things need you. Arman: the privacy policy must say that a user's pasted posts are sent to an AI provider (Anthropic) to learn their voice. Razam Sir: the Anthropic API key and a monthly spend limit (CTO suggests $30 for development).
+Answer: —  
+Status: Open
