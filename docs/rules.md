@@ -3,7 +3,7 @@
 Full operating manual: `CLAUDE.md`. Short version for builders:
 
 ## Approved Libraries
-Next.js, React, Tailwind, `@supabase/ssr`, `@supabase/supabase-js`, Anthropic SDK, Vitest, Playwright, Resend, PostHog, Sentry.
+Next.js, React, Tailwind, `@supabase/ssr`, `@supabase/supabase-js`, Anthropic SDK, Vitest, Playwright, Resend, PostHog, Sentry, fflate (unzip LinkedIn export in the browser).
 
 ## Avoid
 - Any new dependency without listing it first and a reason.
