@@ -46,7 +46,7 @@ export function SignInForm() {
         <h2 className="text-xl font-semibold">Check your inbox</h2>
         <p className="mt-2 text-slate">
           We sent a sign-in link to <strong className="text-ink">{email}</strong>. It works for 1 hour.
-          Open it in this browser.
+          You can open it on any device.
         </p>
         <button className="mt-4 text-sm underline" onClick={() => setState("idle")}>
           Use a different email
