@@ -1,16 +1,15 @@
 import { test, expect, type Page } from "@playwright/test";
 import { createClient } from "@supabase/supabase-js";
-import { admin, magicLink, userIdFor } from "./helpers";
+import { admin, cleanup, magicLink, sharedUser, userIdFor } from "./helpers";
 
 const live = !!process.env.PLAYWRIGHT_BASE_URL;
 const ORDER = ["Professional", "Story-led", "Contrarian", "Hinglish-friendly", "Data-driven"];
 
 async function newUser(page: Page, tag: string) {
-  const email = `b2-${tag}-${Date.now()}@example.com`;
-  await page.goto((await magicLink(email)).path);
-  const id = await userIdFor(email);
-  await admin.from("profiles").update({ niche: "SaaS founder" }).eq("id", id);
-  return { email, id };
+  void tag;
+  const u = await sharedUser(page);
+  await admin.from("profiles").update({ niche: "SaaS founder" }).eq("id", u.id);
+  return u;
 }
 const preset = async (id: string) =>
   (await admin.from("voice_profiles").select("preset, workspaces!inner(owner_id)").eq("workspaces.owner_id", id).single()).data?.preset;
@@ -40,7 +39,7 @@ test("the voice page offers five presets plus none, and the choice persists", as
     await expect(page.getByText("Saved.")).toBeVisible();
     expect(await preset(u.id)).toBeNull();
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });
 
@@ -62,7 +61,7 @@ test.describe("stubbed model", () => {
       await expect(page).toHaveURL(/\/app\/voice$/);
       expect(await preset(u.id)).toBe("story_led");
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -82,7 +81,7 @@ test.describe("stubbed model", () => {
       await expect(card(page, "Contrarian")).toContainText("Stub sample for contrarian");
       await expect(card(page, "Professional")).toContainText("Stub sample for professional");
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -97,7 +96,7 @@ test.describe("stubbed model", () => {
       await page.getByRole("button", { name: "Show all five" }).click();
       await expect(page.getByText("You've compared presets 10 times today. Try again tomorrow.")).toBeVisible();
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -110,7 +109,7 @@ test.describe("stubbed model", () => {
       await expect(card(page, "Data-driven")).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 });
@@ -123,7 +122,7 @@ test("an empty topic asks for one", async ({ page }) => {
     await page.getByRole("button", { name: "Show all five" }).click();
     await expect(page.getByText("Add a topic first.")).toBeVisible();
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });
 
@@ -140,8 +139,8 @@ test("another user cannot change this preset (RLS)", async ({ page }) => {
     expect(write.data).toEqual([]);
     expect(await preset(a.id)).toBeNull();
   } finally {
-    await admin.auth.admin.deleteUser(a.id);
-    await admin.auth.admin.deleteUser(idB);
+    await cleanup(a.id);
+    await cleanup(idB);
   }
 });
 
@@ -166,7 +165,7 @@ test.describe("real model (live site only)", () => {
       expect(rows.length).toBeGreaterThanOrEqual(5);
       expect(rows.every((r) => r.model === "claude-haiku-5-5" && r.tokens_in > 0 && Number(r.cost_usd) > 0)).toBe(true);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 });

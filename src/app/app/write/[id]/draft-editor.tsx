@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import { inventedNumbers } from "@/lib/banned";
 import { MAX_BODY, countWords } from "@/lib/post-writer";
 import { rewriteDraft, saveDraft } from "../actions";
+import { HookPanel } from "./hook-panel";
 
 export function DraftEditor({ id, initialBody, notes }: { id: string; initialBody: string; notes: string }) {
   const [body, setBody] = useState(initialBody);
@@ -85,6 +86,16 @@ export function DraftEditor({ id, initialBody, notes }: { id: string; initialBod
           {pending ? "Writing…" : "Write again"}
         </button>
       </div>
+
+      <HookPanel
+        id={id}
+        body={body}
+        onSwap={(next) => {
+          lastSaved.current = next; // already saved by the swap
+          setBody(next);
+          setSaved("saved");
+        }}
+      />
 
       {confirming && (
         <div role="group" aria-label="Confirm writing again" className="rounded-card border border-line bg-white p-4">

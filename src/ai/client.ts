@@ -14,6 +14,8 @@ export type AskArgs = {
   system: string;
   user: string;
   maxTokens: number;
+  /** Turn off the model's hidden thinking: faster and cheaper for list-style tasks, and it cannot eat the token limit. */
+  noThinking?: boolean;
   userId: string;
   workspaceId: string;
 };
@@ -35,8 +37,27 @@ function stubDraft(a: AskArgs): string {
   return clean;
 }
 
+const TYPES = ["question", "bold_claim", "number", "story", "contrarian", "curiosity", "direct_promise", "short_punch"];
+
+// Stub for the hook lab. The top-up call is recognised by "Write 8 different hooks".
+function stubHooks(a: AskArgs): string {
+  if (a.user.includes("AI_STUB_FAIL")) throw new Error("stubbed failure");
+  const topUp = a.system.includes("Write 8 different hooks");
+  const bad = a.user.includes("AI_STUB_BADHOOKS") && !topUp;
+  const n = topUp ? 8 : 12;
+  const letters = (k: number) => [...String(k)].map((d) => "abcdefghij"[+d]).join(""); // digits would count as invented numbers
+  const hooks = Array.from({ length: n }, (_, i) => ({
+    text: bad && i < 3 ? `Stub hook that is far too long ${"x".repeat(120)}` : `Stub hook ${topUp ? "extra " : ""}${letters(i + 1)}`,
+    type: TYPES[i % TYPES.length],
+    score: topUp ? 5 : 3 + ((i * 5) % 7),
+    reason: `Reason ${i + 1}`,
+  }));
+  return JSON.stringify({ current: { score: 5, reason: "Fine but plain" }, hooks });
+}
+
 function stubReply(a: AskArgs): string {
   if (a.feature === "post_write") return stubDraft(a);
+  if (a.feature === "hook_lab") return stubHooks(a);
   if (a.feature !== "preset_preview") {
     if (a.user.includes("AI_STUB_FAIL")) throw new Error("stubbed failure");
     return STUB_REPLY;
@@ -58,6 +79,7 @@ export async function askModel(a: AskArgs): Promise<string> {
     .messages.create({
       model: a.model,
       max_tokens: a.maxTokens,
+      ...(a.noThinking ? { thinking: { type: "disabled" as const } } : {}),
       system: a.system,
       messages: [{ role: "user", content: a.user }],
     })

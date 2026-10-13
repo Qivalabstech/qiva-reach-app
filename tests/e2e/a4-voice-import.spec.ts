@@ -1,18 +1,16 @@
 import { test, expect, type Page } from "@playwright/test";
 import { createClient } from "@supabase/supabase-js";
 import { zipSync, strToU8 } from "fflate";
-import { admin, magicLink, userIdFor } from "./helpers";
+import { admin, cleanup, magicLink, sharedUser, userIdFor } from "./helpers";
 
 const post = (n: number) => `Post ${n}: what I learned shipping a small product every single week.`;
 const paste = (n: number) => Array.from({ length: n }, (_, i) => post(i + 1)).join("\n---\n");
 
 async function newUser(page: Page, tag: string) {
-  const email = `a4-${tag}-${Date.now()}@example.com`;
-  await page.goto((await magicLink(email)).path);
-  await expect(page).toHaveURL(/\/onboarding$/);
-  const id = await userIdFor(email);
+  void tag;
+  const u = await sharedUser(page);
   await page.goto("/onboarding/voice");
-  return { email, id };
+  return u;
 }
 
 const importedCount = async (id: string) =>
@@ -26,7 +24,7 @@ test("fewer than 3 posts shows the clear message and cannot continue", async ({ 
     await expect(page.getByText("We need at least 3 posts to learn your voice. Paste a few more.")).toBeVisible();
     await expect(page.getByRole("button", { name: "Learn my voice" })).toBeDisabled();
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });
 
@@ -48,7 +46,7 @@ test("5 pasted posts import, finish onboarding, and re-importing skips duplicate
     await expect(page).toHaveURL(/\/app\/voice$/);
     expect(await importedCount(u.id)).toBe(7);
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });
 
@@ -68,7 +66,7 @@ test("Shares.csv and its zip both import", async ({ page }) => {
     const body = (await admin.from("posts").select("body").eq("author_id", u.id).like("body", "Post 3:%").single()).data?.body;
     expect(body).toContain("A second line, with a comma.");
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });
 
@@ -79,7 +77,7 @@ test("a file with no posts shows a clear error", async ({ page }) => {
     await page.getByLabel(/Upload Shares.csv/).setInputFiles({ name: "Shares.csv", mimeType: "text/csv", buffer: Buffer.from("a,b\n1,2") });
     await expect(page.getByText("We couldn't find posts in that file")).toBeVisible();
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });
 
@@ -100,8 +98,8 @@ test("imported posts are invisible to other users (RLS)", async ({ page }) => {
     const write = await b.from("posts").insert({ workspace_id: ws.id, author_id: idB, body: post(99), status: "imported" });
     expect(write.error).not.toBeNull();
   } finally {
-    await admin.auth.admin.deleteUser(a.id);
-    await admin.auth.admin.deleteUser(idB);
+    await cleanup(a.id);
+    await cleanup(idB);
   }
 });
 
@@ -115,6 +113,6 @@ test("skipping goes to the app with the empty state; page fits 390 px", async ({
     await expect(page.getByText("No drafts yet. Paste a few old posts")).toBeVisible();
     expect(await importedCount(u.id)).toBe(0);
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });

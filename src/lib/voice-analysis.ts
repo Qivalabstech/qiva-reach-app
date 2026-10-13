@@ -55,7 +55,8 @@ export async function runVoiceAnalysis(supabase: SupabaseClient, userId: string)
       model: process.env.ANTHROPIC_MODEL_FAST!,
       system: VOICE_ANALYSIS_SYSTEM,
       user: voiceAnalysisUser(posts),
-      maxTokens: 400,
+      maxTokens: 1000,
+      noThinking: true,
       userId,
       workspaceId,
     });

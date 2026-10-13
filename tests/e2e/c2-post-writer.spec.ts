@@ -1,15 +1,13 @@
 import { test, expect, type Page, type Browser } from "@playwright/test";
 import { createClient } from "@supabase/supabase-js";
-import { admin, magicLink, userIdFor } from "./helpers";
+import { admin, cleanup, freshUser, magicLink, sharedUser } from "./helpers";
 
 const live = !!process.env.PLAYWRIGHT_BASE_URL;
 const NOTES = "I run a small design studio. This month we changed how we send proposals: price on page one, one option only. Clients decide faster.";
 
 async function newUser(page: Page, tag: string) {
-  const email = `c2-${tag}-${Date.now()}@example.com`;
-  await page.goto((await magicLink(email)).path);
-  const id = await userIdFor(email);
-  return { email, id };
+  void tag;
+  return sharedUser(page);
 }
 const drafts = async (id: string) => (await admin.from("posts").select("*").eq("author_id", id).eq("status", "draft")).data ?? [];
 const workspaceOf = async (id: string) => (await admin.from("workspaces").select("id").eq("owner_id", id).single()).data!.id as string;
@@ -46,7 +44,7 @@ test.describe("stubbed model", () => {
       await page.goto("/app");
       await expect(page.getByRole("link", { name: "Continue your draft" })).toBeVisible();
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -60,7 +58,7 @@ test.describe("stubbed model", () => {
       expect(all).toHaveLength(1);
       expect(all[0].body).not.toContain("game-changer");
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -73,7 +71,7 @@ test.describe("stubbed model", () => {
       await expect(page.getByLabel("Topic or notes")).toHaveValue(/AI_STUB_BANNED_ALWAYS/);
       expect(await drafts(u.id)).toHaveLength(0);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -86,7 +84,7 @@ test.describe("stubbed model", () => {
       expect(n).toBeGreaterThanOrEqual(120);
       expect(n).toBeLessThanOrEqual(250);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -99,7 +97,7 @@ test.describe("stubbed model", () => {
       await box.fill((await box.inputValue()).replace("40%", "a lot"));
       await expect(page.getByText(/numbers you didn't give us/)).toHaveCount(0);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -118,7 +116,7 @@ test.describe("stubbed model", () => {
       await write(page, NOTES); // default style
       await expect(page.getByLabel("Your post")).toHaveValue(/^Stub draft for story_led\./);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -138,7 +136,7 @@ test.describe("stubbed model", () => {
       await expect(box).toHaveValue(original);
       expect((await drafts(u.id))[0].body).toBe(original);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -151,7 +149,7 @@ test.describe("stubbed model", () => {
       await expect(page.getByText("You've reached today's writing limit. Try again tomorrow.")).toBeVisible();
       expect(await drafts(u.id)).toHaveLength(0);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -165,7 +163,7 @@ test.describe("stubbed model", () => {
       await expect(page).toHaveURL(/\/app\/write\/[0-9a-f-]{36}$/);
       expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 });
@@ -176,7 +174,7 @@ test("an empty topic asks for one", async ({ page }) => {
     await write(page, "   ");
     await expect(page.getByText("Add a topic or some notes first.")).toBeVisible();
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });
 
@@ -192,7 +190,7 @@ test("Copy post puts the draft on the clipboard", async ({ page, context }) => {
     await expect(page.getByRole("button", { name: "Copied" })).toBeVisible();
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(text);
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });
 
@@ -201,7 +199,7 @@ test("another user cannot open or read this draft (RLS)", async ({ page, browser
   const a = await newUser(page, "rls-a");
   const ctxB = await browser.newContext();
   const pageB = await ctxB.newPage();
-  const b = await newUser(pageB, "rls-b");
+  const b = await freshUser(pageB);
   try {
     await write(page, NOTES);
     await expect(page).toHaveURL(/\/app\/write\/[0-9a-f-]{36}$/);
@@ -214,8 +212,8 @@ test("another user cannot open or read this draft (RLS)", async ({ page, browser
     expect((await client.from("posts").select("id").eq("author_id", a.id)).data).toEqual([]);
   } finally {
     await ctxB.close();
-    await admin.auth.admin.deleteUser(a.id);
-    await admin.auth.admin.deleteUser(b.id);
+    await cleanup(a.id);
+    await cleanup(b.id);
   }
 });
 
@@ -244,7 +242,7 @@ test.describe("real model (live site only)", () => {
       expect(rows.length).toBeGreaterThanOrEqual(styles.length);
       expect(rows.every((r) => r.model === "claude-sonnet-5-5" && r.tokens_in > 0 && Number(r.cost_usd) > 0)).toBe(true);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -257,7 +255,7 @@ test.describe("real model (live site only)", () => {
       expect(n).toBeGreaterThanOrEqual(120);
       expect(n).toBeLessThanOrEqual(250);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 });
