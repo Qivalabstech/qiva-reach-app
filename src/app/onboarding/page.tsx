@@ -1,14 +1,21 @@
+import { Avatar } from "@/components/avatar";
 import { Wordmark } from "@/components/wordmark";
 import { GoalNicheForm } from "@/components/goal-niche-form";
 import { supabaseServer } from "@/lib/supabase/server";
 import { saveOnboarding } from "./actions";
 
 export default async function Onboarding() {
-  const { data: profile } = await (await supabaseServer()).from("profiles").select("goal, niche").single();
+  const { data: profile } = await (await supabaseServer()).from("profiles").select("goal, niche, full_name, avatar_url").single();
   return (
     <main className="mx-auto flex min-h-dvh max-w-xl flex-col gap-6 px-4 py-10">
       <Wordmark />
       <p className="text-sm text-slate">Step 1 of 2</p>
+      {profile?.full_name && (
+        <div className="flex items-center gap-3">
+          <Avatar url={profile.avatar_url} name={profile.full_name} />
+          <p className="text-lg">Welcome, {profile.full_name.split(" ")[0]}</p>
+        </div>
+      )}
       <h1 className="text-3xl font-bold">Let&apos;s set up your account</h1>
       <div className="border-t-2 border-dashed border-marigold" aria-hidden />
       <GoalNicheForm
