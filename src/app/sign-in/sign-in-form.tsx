@@ -2,16 +2,19 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { LINKEDIN_MESSAGES, type LinkedInError } from "@/lib/linkedin-auth";
 import { supabaseBrowser } from "@/lib/supabase/browser";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function SignInForm() {
-  const linkError = useSearchParams().get("error") === "link";
+  const errorParam = useSearchParams().get("error") ?? "";
+  const linkError = errorParam === "link";
+  const linkedinError = LINKEDIN_MESSAGES[errorParam as LinkedInError];
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"idle" | "sending" | "sent">("idle");
   const [error, setError] = useState(
-    linkError ? "That sign-in link has expired or was already used. Request a new one." : "",
+    linkedinError ?? (linkError ? "That sign-in link has expired or was already used. Request a new one." : ""),
   );
 
   async function submit(e: React.FormEvent) {
@@ -55,8 +58,28 @@ export function SignInForm() {
     );
   }
 
+  async function linkedin() {
+    setError("");
+    const { error } = await supabaseBrowser().auth.signInWithOAuth({
+      provider: "linkedin_oidc",
+      options: { redirectTo: `${location.origin}/auth/callback` },
+    });
+    if (error) setError(LINKEDIN_MESSAGES.linkedin_failed);
+  }
+
   return (
     <form onSubmit={submit} noValidate className="rounded-card border border-line bg-white p-6">
+      <button
+        type="button"
+        onClick={linkedin}
+        className="w-full rounded-control border border-ink bg-white px-4 py-3 font-display font-semibold text-ink"
+      >
+        Continue with LinkedIn
+      </button>
+      <p className="mt-2 text-sm text-slate">We read your name, photo and email. We never post for you.</p>
+      <div className="my-5 flex items-center gap-3 text-sm text-slate" aria-hidden>
+        <span className="h-px flex-1 bg-line" /> or <span className="h-px flex-1 bg-line" />
+      </div>
       <label htmlFor="email" className="block text-sm font-semibold">
         Email address
       </label>

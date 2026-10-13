@@ -35,3 +35,6 @@ The models think before they answer, and those hidden tokens count toward `max_t
 
 ## Browser tests and the Supabase login limit
 Supabase Auth allows about 30 token verifications per 5 minutes per IP. Tests therefore log in once per worker (`sharedUser` in `tests/e2e/helpers.ts`), wipe that user's data before each test, and use `freshUser` only when a second person is needed. Do not add a magic-link login to every test. A full run uses about 15 logins; leave a few minutes between a local and a live run.
+
+## LinkedIn token
+The token is saved only by `saveLinkedInConnection` (`src/lib/linkedin.ts`) through the service-role client, encrypted with `TOKEN_ENCRYPTION_KEY`. Never read the token columns from the browser, never log them, never change the key (old tokens could no longer be read). If a key must change, add a `v2:` format and keep decrypting `v1:`.

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Avatar } from "@/components/avatar";
 import { supabaseServer } from "@/lib/supabase/server";
 import { Wordmark } from "@/components/wordmark";
 import { signOut } from "./actions";
@@ -6,7 +7,7 @@ import { signOut } from "./actions";
 export default async function AppHome() {
   const supabase = await supabaseServer();
   const { data: { user } } = await supabase.auth.getUser();
-  const { data: profile } = await supabase.from("profiles").select("full_name").single();
+  const { data: profile } = await supabase.from("profiles").select("full_name, avatar_url").single();
   const { data: latest } = await supabase
     .from("posts")
     .select("id")
@@ -21,7 +22,10 @@ export default async function AppHome() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-xl flex-col gap-6 px-4 py-10">
       <Wordmark />
-      <h1 className="text-3xl font-bold">Welcome{profile?.full_name ? `, ${profile.full_name}` : ""}</h1>
+      <div className="flex items-center gap-3">
+        <Avatar url={profile?.avatar_url} name={profile?.full_name ?? user?.email} />
+        <h1 className="text-3xl font-bold">Welcome{profile?.full_name ? `, ${profile.full_name}` : ""}</h1>
+      </div>
       <p className="text-slate">Signed in as {user?.email}.</p>
       {imported ? (
         <p>{imported} of your posts imported. <Link href="/app/voice" className="underline">Check your voice</Link></p>

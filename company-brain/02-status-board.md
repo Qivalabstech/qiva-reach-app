@@ -14,7 +14,7 @@ Updated by whoever changes something. Keep it short; history goes in the logs.
 | Waitlist signups | Not counted yet. Test rows to be deleted before launch (`delete from public.waitlist;`). Target 300 by 25 Oct |
 | Written founding commitments | 0. Target 15 by 25 Oct |
 | Paying customers / MRR | 0 / $0 |
-| LinkedIn developer app | Not created yet (Phase 0 WP 0.4) |
+| LinkedIn developer app | Created; Supabase LinkedIn (OIDC) provider enabled (14 Oct 2026). Real sign-in not tried yet |
 | LinkedIn Community Management API | Not applied for yet |
 | App (Vercel) | Live at https://qiva-reach-app.vercel.app (email sign-in). Vercel project `qiva-reach-app`, Supabase project `qiva-reach-app` (Mumbai) |
 | Product repository | Created: private `Qivalabstech/qiva-reach-app`. Skeleton and core migration on branch `feat/foundation-skeleton` |
@@ -42,6 +42,7 @@ Updated by whoever changes something. Keep it short; history goes in the logs.
 
 | ID | Status | Note |
 |---|---|---|
+| A1 | In progress | Core built; waiting for the headline decision (Q-007), TOKEN_ENCRYPTION_KEY in Vercel and real-account tests |
 | C1 | In progress | Built; relevance rating (Arman), PostHog events, help note still to do |
 | C3 | In progress | Built; favourite-hook check (Arman), PostHog events, help note still to do |
 | C2 | In progress | Built; 10 test users rating, PostHog events, help note still to do |
