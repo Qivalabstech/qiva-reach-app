@@ -18,7 +18,7 @@ Legend: ✅ done · 🟡 partly done · ⬜ not done · 🔒 waiting for a found
 
 | ID | Feature | Criteria tested | LinkedIn gate | Chrome | 390 px phone | Safari | RLS | PostHog event | Help note | Demoed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| A1 | Sign in with LinkedIn | 🟡 built and tested; real-account tests 🔒 | ⬜ | ⬜ | ⬜ | ⬜ | ✅ table exists | ⬜ | ⬜ | ⬜ |
+| A1 | Sign in with LinkedIn | 🟡 built and tested; first real LinkedIn login passed 14 Oct 2026 (database checked); cancel and second-account tests still to do | ⬜ | ⬜ | ⬜ | ⬜ | ✅ table exists | ⬜ | ⬜ | ⬜ |
 | A2 | Email and Google sign-up | 🟡 email ✅, Google 🔒 | ✅ | ✅ | ✅ | ⬜ | ✅ | ⬜ | ⬜ | ⬜ |
 | A3 | Goal and niche | ✅ | ✅ | ✅ | ✅ | ⬜ | ✅ | ⬜ | ⬜ | ⬜ |
 | A4 | Voice import | ✅ (made-up export; real export 🔒) | ✅ | ✅ | ✅ | ⬜ | ✅ | ⬜ | ⬜ | ⬜ |

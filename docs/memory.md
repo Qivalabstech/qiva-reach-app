@@ -41,6 +41,8 @@
 - [x] A1 headline field and "Remove LinkedIn access" (D-009, D-010; Arman's written approval pending); 115 unit/integration and 72 browser tests pass — 14 Oct 2026
 - [x] `TOKEN_ENCRYPTION_KEY` added to Vercel (Production only) by Razam Sir — 14 Oct 2026
 
+- [x] A1 first real LinkedIn login by Razam Sir on the live site: row saved with name and photo link, token encrypted (v1, decrypts with the key, 60-day expiry), email and LinkedIn identities on one account, audit entry written — 14 Oct 2026
+
 ## Remaining
 - A1: real-account manual tests; Arman's written approval of D-009 and D-010; Google sign-in (needs Google OAuth client); PostHog, help notes, Safari checks; real-user checks for G1.
 
