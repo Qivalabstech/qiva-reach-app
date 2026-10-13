@@ -35,8 +35,11 @@
 
 - [x] C1 idea generator: /app/ideas, 20 ideas per click, duplicate filter over 24 hours, top-up, banned phrases, limits, "Write this post" link; relevance sheet for Arman — 14 Oct 2026
 
+- [x] A1 core: LinkedIn button, `/auth/callback` saves profile and AES-256-GCM encrypted token, Settings connect, avatar; 110 unit/integration tests and 70 browser tests pass; LinkedIn accepted the real authorization URL (HTTP 303 to its login) — 14 Oct 2026
+- [x] Supabase: LinkedIn (OIDC) provider on, manual linking switched on, `TOKEN_ENCRYPTION_KEY` generated into `.env.local` — 14 Oct 2026
+
 ## Remaining
-- A1 LinkedIn sign-in (needs the LinkedIn developer app, Q-003); Google sign-in (needs Google OAuth client); PostHog, help notes, Safari checks; real-user checks for G1.
+- A1: headline field and Remove button (after Q-007 decision), real-account manual tests; `TOKEN_ENCRYPTION_KEY` into Vercel; Google sign-in (needs Google OAuth client); PostHog, help notes, Safari checks; real-user checks for G1.
 
 ## Blockers
 - Google OAuth client, Resend (Supabase built-in email is limited to a few emails an hour), PostHog, Anthropic key, LinkedIn app (Q-003).

@@ -21,7 +21,7 @@
 - [x] Quality test set script and README (10 real users still to collect)
 
 ## Checkpoint 4: LinkedIn sign-in
-- [ ] A1 (after the LinkedIn developer app exists, Q-003)
+- [x] A1 core built and tested (headline field, Remove button and real-account checks wait for decisions)
 
 ## Gate G1 (8 Nov)
 - [ ] 9 features accepted · 10 users under 5 min · 7/10 voice match 4–5 · RLS verified · Hakscan clean

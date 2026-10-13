@@ -32,6 +32,7 @@ let shared: { id: string; email: string; cookies: Awaited<ReturnType<ReturnType<
 
 export async function resetUser(id: string) {
   const ws = (await admin.from("workspaces").select("id").eq("owner_id", id).single()).data?.id;
+  await admin.from("linkedin_profiles").delete().eq("user_id", id);
   await admin.from("posts").delete().eq("author_id", id);
   await admin.from("ai_usage").delete().eq("user_id", id);
   if (ws) {
@@ -40,7 +41,7 @@ export async function resetUser(id: string) {
       tone: null, preset: null, avg_length: null, emoji_use: null, banned_phrases: [], signature_phrases: [], analyzed_at: null, tone_source: null,
     }).eq("workspace_id", ws);
   }
-  await admin.from("profiles").update({ goal: null, niche: null, onboarded_at: null }).eq("id", id);
+  await admin.from("profiles").update({ goal: null, niche: null, onboarded_at: null, full_name: null, avatar_url: null }).eq("id", id);
 }
 
 // A clean, signed-in user with a personal workspace. Leaves the page on /onboarding.
