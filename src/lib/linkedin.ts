@@ -54,3 +54,21 @@ export async function saveLinkedInConnection(args: {
   await admin.from("audit_log").insert({ actor_id: userId, action: "linkedin_connected", target: row.id });
   return "ok";
 }
+
+// Saves the headline the user typed (LinkedIn does not share it). Keeps both copies in step.
+export async function saveHeadline(args: { admin: SupabaseClient; userId: string; headline: string | null }): Promise<boolean> {
+  const { admin, userId, headline } = args;
+  const a = await admin.from("profiles").update({ headline }).eq("id", userId);
+  const b = await admin.from("linkedin_profiles").update({ headline }).eq("user_id", userId);
+  return !a.error && !b.error;
+}
+
+// Deletes the saved LinkedIn access (profile row and encrypted token) and records it. The sign-in identity stays,
+// so the user can sign in with LinkedIn again. LinkedIn's own grant can be removed in LinkedIn's settings.
+export async function removeLinkedInConnection(args: { admin: SupabaseClient; userId: string }): Promise<boolean> {
+  const { admin, userId } = args;
+  const { data: rows, error } = await admin.from("linkedin_profiles").delete().eq("user_id", userId).select("id");
+  if (error) return false;
+  if (rows?.length) await admin.from("audit_log").insert({ actor_id: userId, action: "linkedin_removed", target: rows[0].id });
+  return true;
+}

@@ -128,3 +128,55 @@ test("settings fits a 390 px phone with the LinkedIn section", async ({ page }) 
     await cleanup(u.id);
   }
 });
+
+async function connectedUser(page: Page) {
+  const u = await sharedUser(page);
+  const ws = (await admin.from("workspaces").select("id").eq("owner_id", u.id).single()).data!.id as string;
+  await admin.from("linkedin_profiles").insert({
+    workspace_id: ws, user_id: u.id, linkedin_sub: `e2e-${Date.now()}-${Math.random()}`, name: "Asha Rao",
+    access_token_enc: encryptToken(TOKEN, process.env.TOKEN_ENCRYPTION_KEY!), token_expires_at: new Date(Date.now() + 60 * 864e5).toISOString(),
+  });
+  await page.goto("/app/settings");
+  return u;
+}
+
+test("settings: the headline is optional, explained, saved in both places, and can be cleared", async ({ page }) => {
+  const u = await connectedUser(page);
+  try {
+    await expect(page.getByText("LinkedIn doesn't share your headline with apps like ours.")).toBeVisible();
+    await page.getByLabel("Your headline (optional)").fill("  Founder at Acme  ");
+    await page.getByRole("button", { name: "Save headline" }).click();
+    await expect(page.getByText("Saved.")).toBeVisible();
+    expect((await admin.from("profiles").select("headline").eq("id", u.id).single()).data!.headline).toBe("Founder at Acme");
+    expect((await admin.from("linkedin_profiles").select("headline").eq("user_id", u.id).single()).data!.headline).toBe("Founder at Acme");
+
+    await page.reload();
+    await expect(page.getByLabel("Your headline (optional)")).toHaveValue("Founder at Acme");
+    await page.getByLabel("Your headline (optional)").fill("");
+    await page.getByRole("button", { name: "Save headline" }).click();
+    await expect(page.getByText("Saved.")).toBeVisible();
+    expect((await admin.from("profiles").select("headline").eq("id", u.id).single()).data!.headline).toBeNull();
+  } finally {
+    await cleanup(u.id);
+  }
+});
+
+test("settings: Remove LinkedIn access asks first, then deletes the saved access and says how to finish on LinkedIn", async ({ page }) => {
+  const u = await connectedUser(page);
+  try {
+    await expect(page.getByText("Permitted services")).toBeVisible();
+    await page.getByRole("button", { name: "Remove LinkedIn access" }).click();
+    await expect(page.getByText("This deletes the LinkedIn access saved by Qiva Reach.")).toBeVisible();
+    await page.getByRole("button", { name: "Cancel" }).click();
+    expect((await admin.from("linkedin_profiles").select("id").eq("user_id", u.id)).data).toHaveLength(1);
+
+    await page.getByRole("button", { name: "Remove LinkedIn access" }).click();
+    await page.getByRole("button", { name: "Remove", exact: true }).click();
+    await expect(page.getByRole("button", { name: "Connect LinkedIn" })).toBeVisible();
+    expect((await admin.from("linkedin_profiles").select("id").eq("user_id", u.id)).data).toEqual([]);
+    const audit = (await admin.from("audit_log").select("action").eq("actor_id", u.id)).data!;
+    expect(audit.map((a) => a.action)).toContain("linkedin_removed");
+  } finally {
+    await cleanup(u.id);
+  }
+});

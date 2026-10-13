@@ -50,3 +50,13 @@ export const TOKEN_LIFETIME_DAYS = 60; // LinkedIn issues every access token for
 export const NEXT_COOKIE = "qr_next";
 const ALLOWED_NEXT = ["/app/settings"];
 export const safeNext = (v: string | undefined | null) => (v && ALLOWED_NEXT.includes(v) ? v : null);
+
+export const HEADLINE_MAX = 220; // LinkedIn's own headline limit
+
+// An optional headline. Empty clears it.
+export function validateHeadline(input: unknown): { ok: true; value: string | null } | { ok: false; error: string } {
+  const v = typeof input === "string" ? input.trim() : "";
+  if (v.length > HEADLINE_MAX) return { ok: false, error: `Keep your headline under ${HEADLINE_MAX} characters.` };
+  if (v.includes("\n")) return { ok: false, error: "A headline is one line." };
+  return { ok: true, value: v || null };
+}
