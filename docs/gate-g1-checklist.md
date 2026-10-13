@@ -18,7 +18,7 @@ Legend: ✅ done · 🟡 partly done · ⬜ not done · 🔒 waiting for a found
 
 | ID | Feature | Criteria tested | LinkedIn gate | Chrome | 390 px phone | Safari | RLS | PostHog event | Help note | Demoed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| A1 | Sign in with LinkedIn | ⬜ spec not written | ⬜ | ⬜ | ⬜ | ⬜ | ✅ table exists | ⬜ | ⬜ | ⬜ |
+| A1 | Sign in with LinkedIn | ⬜ spec drafted, headline decision needed | ⬜ | ⬜ | ⬜ | ⬜ | ✅ table exists | ⬜ | ⬜ | ⬜ |
 | A2 | Email and Google sign-up | 🟡 email ✅, Google 🔒 | ✅ | ✅ | ✅ | ⬜ | ✅ | ⬜ | ⬜ | ⬜ |
 | A3 | Goal and niche | ✅ | ✅ | ✅ | ✅ | ⬜ | ✅ | ⬜ | ⬜ | ⬜ |
 | A4 | Voice import | ✅ (made-up export; real export 🔒) | ✅ | ✅ | ✅ | ⬜ | ✅ | ⬜ | ⬜ | ⬜ |
@@ -34,7 +34,7 @@ Legend: ✅ done · 🟡 partly done · ⬜ not done · 🔒 waiting for a found
 
 | # | Task | Needs from founders | Status |
 |---|---|---|---|
-| 1 | Write the A1 spec (LinkedIn sign-in) and get it approved | Approval from both partners | ⬜ next |
+| 1 | Write the A1 spec (LinkedIn sign-in) and get it approved | Written 14 Oct 2026 (`docs/specs/A1.md`). Needs both partners' decision on the headline (LinkedIn does not provide it) and the remove button: Q-007 | 🔒 |
 | 2 | Build A1 | LinkedIn developer app (Q-003): client ID and secret | 🔒 |
 | 3 | Build the Google button for A2 | Google OAuth client | 🔒 |
 | 4 | Add PostHog and the usage events listed in each spec | PostHog account and project key | 🔒 |

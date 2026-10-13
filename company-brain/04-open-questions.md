@@ -33,3 +33,8 @@ Status: Open
 The G1 checklist is ready: `docs/gate-g1-checklist.md` (everything and who owns it) and `docs/for-arman.md` (Arman's steps). Three decisions from the founders unblock the test sessions: (1) Resend as the email sender with a sender subdomain such as `mail.qivareach.com` (DNS records on that subdomain only; `www` and the root stay untouched). Supabase's built-in email allows only a few messages an hour, so 10 testers cannot sign up without it. (2) The LinkedIn developer app (Q-003) and a Google OAuth client, so A1 and the Google button can be built. (3) A PostHog account for the usage events every feature needs. Razam Sir: say "go" on any of these and the CTO gives the click-by-click steps.
 Answer: —  
 Status: Open
+
+### Q-007 · 14 Oct 2026 · CTO → Founders
+Spec A1 (LinkedIn sign-in) is ready: `docs/specs/A1.md`. Checked in LinkedIn's documentation: sign-in with LinkedIn does **not** return a headline, only name, photo, email and an id. Decision for both partners: (1) Option A, the user types an optional headline in Settings, and the criterion "headline saved" changes accordingly (needs written approval as a compliance exception); or option B, mark A1 "Blocked: compliance"; option C, read it later from the user's data export. CTO recommends A. (2) Include a "Remove LinkedIn access" button (data-protection exception) or not. Also still needed to build A1: the LinkedIn developer app (Q-003) and its Client ID and Secret in Supabase, "Allow manual linking" switched on in Supabase, and `TOKEN_ENCRYPTION_KEY` in Vercel. Say "go" and the CTO gives the click-by-click steps.
+Answer: —  
+Status: Open
