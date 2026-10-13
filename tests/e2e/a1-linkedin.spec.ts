@@ -180,3 +180,16 @@ test("settings: Remove LinkedIn access asks first, then deletes the saved access
     await cleanup(u.id);
   }
 });
+
+test("onboarding greets a LinkedIn user by first name with their photo; an email user sees no greeting", async ({ page }) => {
+  const u = await sharedUser(page);
+  try {
+    await expect(page.getByText(/^Welcome, /)).toHaveCount(0);
+    await admin.from("profiles").update({ full_name: "Asha Rao", avatar_url: "https://example.invalid/none.jpg" }).eq("id", u.id);
+    await page.goto("/onboarding");
+    await expect(page.getByText("Welcome, Asha")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Let's set up your account" })).toBeVisible();
+  } finally {
+    await cleanup(u.id);
+  }
+});
