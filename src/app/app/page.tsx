@@ -31,6 +31,7 @@ export default async function AppHome() {
           <Link href="/onboarding/voice" className="underline">Add posts</Link>
         </p>
       )}
+      <Link href="/app/ideas" className="underline">Post ideas</Link>
       <Link href="/app/write" className="underline">Write a post</Link>
       {latest && <Link href={`/app/write/${latest.id}`} className="underline">Continue your draft</Link>}
       <Link href="/app/voice" className="underline">Your voice</Link>
