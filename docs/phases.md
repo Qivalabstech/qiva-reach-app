@@ -15,7 +15,7 @@
 - [x] B2 tone presets (built, tested; blind test pending)
 
 ## Checkpoint 3: Writer (~2 Nov)
-- [ ] C1 ideas
+- [x] C1 ideas (built, tested)
 - [x] C2 post writer (built, tested)
 - [x] C3 hook lab (built, tested)
 - [x] Quality test set script and README (10 real users still to collect)

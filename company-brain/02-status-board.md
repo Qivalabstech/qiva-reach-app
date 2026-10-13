@@ -33,6 +33,7 @@ Updated by whoever changes something. Keep it short; history goes in the logs.
 
 | ID | Status | Note |
 |---|---|---|
+| C1 | In progress | Built; relevance rating (Arman), PostHog events, help note still to do |
 | C3 | In progress | Built; favourite-hook check (Arman), PostHog events, help note still to do |
 | C2 | In progress | Built; 10 test users rating, PostHog events, help note still to do |
 | B2 | In progress | Built; blind test (Arman + 2), PostHog events and help note still to do |
@@ -54,6 +55,6 @@ Statuses: Not started · In progress · Accepted · Blocked: compliance
 
 | Role | Focus this week |
 |---|---|
-| CTO | Checkpoint 1 nearly done (skeleton, database, email sign-in live). Next: build C1 ideas |
+| CTO | Checkpoint 1 nearly done (skeleton, database, email sign-in live). Next: A1 LinkedIn sign-in (needs LinkedIn app), PostHog and help notes, G1 test users |
 | CMO | Waitlist launch, daily LinkedIn content, path to 300 signups |
 | CFO | LLP vs Private Limited check, 24-month model, investor shortlist |

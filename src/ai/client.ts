@@ -45,7 +45,6 @@ function stubHooks(a: AskArgs): string {
   const topUp = a.system.includes("Write 8 different hooks");
   const bad = a.user.includes("AI_STUB_BADHOOKS") && !topUp;
   const n = topUp ? 8 : 12;
-  const letters = (k: number) => [...String(k)].map((d) => "abcdefghij"[+d]).join(""); // digits would count as invented numbers
   const hooks = Array.from({ length: n }, (_, i) => ({
     text: bad && i < 3 ? `Stub hook that is far too long ${"x".repeat(120)}` : `Stub hook ${topUp ? "extra " : ""}${letters(i + 1)}`,
     type: TYPES[i % TYPES.length],
@@ -55,7 +54,24 @@ function stubHooks(a: AskArgs): string {
   return JSON.stringify({ current: { score: 5, reason: "Fine but plain" }, hooks });
 }
 
+const letters = (k: number) => [...String(k)].map((d) => "abcdefghij"[+d]).join("");
+
+// Stub for the idea generator. Markers in the focus line pick a behaviour.
+function stubIdeas(a: AskArgs): string {
+  if (a.user.includes("AI_STUB_FAIL")) throw new Error("stubbed failure");
+  const n = Number(a.system.match(/Write (\d+) different post ideas/)?.[1] ?? 25);
+  const avoid = [...a.user.matchAll(/^- (.+)$/gm)].map((m) => m[1]).filter((l) => l.startsWith("Stub idea"));
+  const decode = (l: string) => Number([...l.replace("Stub idea ", "")].map((c) => "abcdefghij".indexOf(c)).join("")) || 0;
+  const offset = Math.max(0, ...avoid.map(decode)); // numbers continue after the highest one already shown
+  let ideas = Array.from({ length: n }, (_, i) => `Stub idea ${letters(offset + i + 1)}`);
+  if (a.user.includes("AI_STUB_FEW")) ideas = ideas.slice(0, 6);
+  if (a.user.includes("AI_STUB_DUPES") && n === 25) ideas = [...avoid.slice(0, 10), ...ideas.slice(10)]; // first call repeats earlier ideas on purpose
+  if (a.user.includes("AI_STUB_BANNED")) ideas[0] = "A game-changer for your week";
+  return JSON.stringify({ ideas });
+}
+
 function stubReply(a: AskArgs): string {
+  if (a.feature === "idea_generation") return stubIdeas(a);
   if (a.feature === "post_write") return stubDraft(a);
   if (a.feature === "hook_lab") return stubHooks(a);
   if (a.feature !== "preset_preview") {
