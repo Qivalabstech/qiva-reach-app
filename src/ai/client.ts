@@ -54,12 +54,18 @@ export async function askModel(a: AskArgs): Promise<string> {
   }
 
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-  const res = await client.messages.create({
-    model: a.model,
-    max_tokens: a.maxTokens,
-    system: a.system,
-    messages: [{ role: "user", content: a.user }],
-  });
+  const res = await client
+    .messages.create({
+      model: a.model,
+      max_tokens: a.maxTokens,
+      system: a.system,
+      messages: [{ role: "user", content: a.user }],
+    })
+    .catch((err) => {
+      // Logged for Vercel runtime logs. No prompt text and no keys.
+      console.error(`AI call failed: feature=${a.feature} model=${a.model} status=${err?.status ?? "none"} ${err?.message ?? err}`);
+      throw err;
+    });
 
   const price = PRICE[a.model] ?? { in: 0, out: 0 };
   await supabaseAdmin().from("ai_usage").insert({
