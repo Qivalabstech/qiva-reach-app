@@ -39,7 +39,7 @@ Legend: ✅ done · 🟡 partly done · ⬜ not done · 🔒 waiting for a found
 | 3 | Build the Google button for A2 | Google OAuth client | 🔒 |
 | 4 | Add PostHog and the usage events listed in each spec | PostHog account and project key | 🔒 |
 | 5 | Write the 9 one-paragraph help notes and a `/help` page | none | ⬜ |
-| 6 | Make test emails work for 10 people: Resend as the email sender, plus the magic-link email template that opens in any browser | Resend account; a decision on a sender subdomain such as `mail.qivareach.com` (DNS records on that subdomain only; `www` and the root domain stay untouched) | 🔒 |
+| 6 | Make test emails work for 10 people: Resend as the email sender, plus the magic-link email template that opens in any browser | Done 14 Oct 2026: Resend on `mail.qivareach.com` (DNS at Wix, root and `www` untouched), custom SMTP in Supabase, both templates changed. A real test from a second device is still to do. | 🟡 |
 | 7 | Run Hakscan on the live site and fix high and critical findings | Hakscan access (Razam Sir) | ⬜ |
 | 8 | Write the RLS audit report (section 5) | Razam Sir runs one query | ⬜ |
 | 9 | Run the G1 test sessions with Arman and fill `docs/g1-test-log.md` | the 10 testers | 🔒 |
@@ -92,8 +92,8 @@ Pass: query 1 returns no rows, and nothing in query 2 lets a signed-in user read
 
 ## 6. Before the test sessions (blockers)
 
-1. **Email must work for 10 people.** Supabase's built-in sender allows only a few emails an hour. Task 6 in section 2 fixes this (Resend). Without it, the sessions will stall.
-2. **The sign-in link must open in any browser.** Today it works only in the same browser that asked for it. The new email template (also task 6) fixes this, which matters when testers read the email on their phone.
+1. ~~Email must work for 10 people.~~ Done: Resend is the sender (14 Oct 2026). Supabase allows 30 emails an hour on custom SMTP; with 10 testers that is enough.
+2. ~~The sign-in link must open in any browser.~~ Done: new email templates (14 Oct 2026). Still to confirm with a real email opened on a second device.
 3. **The privacy line** about AI processing must be live before real people paste their posts.
 4. **Test users' permission** must be written down (a chat message is enough) before their posts are used.
 
