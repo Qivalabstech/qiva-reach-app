@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { linkedInFromSession, oauthErrorKind, safeNext } from "../src/lib/linkedin-auth";
+import { HEADLINE_MAX, linkedInFromSession, oauthErrorKind, safeNext, validateHeadline } from "../src/lib/linkedin-auth";
 
 const q = (s: string) => new URLSearchParams(s);
 
@@ -55,5 +55,20 @@ describe("safeNext", () => {
     expect(safeNext("https://evil.example")).toBeNull();
     expect(safeNext("//evil.example")).toBeNull();
     expect(safeNext(undefined)).toBeNull();
+  });
+});
+
+describe("validateHeadline", () => {
+  it("trims, and an empty headline clears it", () => {
+    expect(validateHeadline("  Founder at Acme  ")).toEqual({ ok: true, value: "Founder at Acme" });
+    expect(validateHeadline("   ")).toEqual({ ok: true, value: null });
+    expect(validateHeadline(undefined)).toEqual({ ok: true, value: null });
+  });
+  it("accepts exactly the limit and rejects more", () => {
+    expect(validateHeadline("x".repeat(HEADLINE_MAX)).ok).toBe(true);
+    expect(validateHeadline("x".repeat(HEADLINE_MAX + 1)).ok).toBe(false);
+  });
+  it("rejects more than one line", () => {
+    expect(validateHeadline("one\ntwo").ok).toBe(false);
   });
 });

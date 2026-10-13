@@ -38,8 +38,11 @@
 - [x] A1 core: LinkedIn button, `/auth/callback` saves profile and AES-256-GCM encrypted token, Settings connect, avatar; 110 unit/integration tests and 70 browser tests pass; LinkedIn accepted the real authorization URL (HTTP 303 to its login) — 14 Oct 2026
 - [x] Supabase: LinkedIn (OIDC) provider on, manual linking switched on, `TOKEN_ENCRYPTION_KEY` generated into `.env.local` — 14 Oct 2026
 
+- [x] A1 headline field and "Remove LinkedIn access" (D-009, D-010; Arman's written approval pending); 115 unit/integration and 72 browser tests pass — 14 Oct 2026
+- [x] `TOKEN_ENCRYPTION_KEY` added to Vercel (Production only) by Razam Sir — 14 Oct 2026
+
 ## Remaining
-- A1: headline field and Remove button (after Q-007 decision), real-account manual tests; `TOKEN_ENCRYPTION_KEY` into Vercel; Google sign-in (needs Google OAuth client); PostHog, help notes, Safari checks; real-user checks for G1.
+- A1: real-account manual tests; Arman's written approval of D-009 and D-010; Google sign-in (needs Google OAuth client); PostHog, help notes, Safari checks; real-user checks for G1.
 
 ## Blockers
 - Google OAuth client, Resend (Supabase built-in email is limited to a few emails an hour), PostHog, Anthropic key, LinkedIn app (Q-003).

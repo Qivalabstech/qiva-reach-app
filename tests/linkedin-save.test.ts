@@ -75,6 +75,27 @@ describe.skipIf(!have)("saveLinkedInConnection (real database)", () => {
     expect(await rows(ids.b)).toHaveLength(0);
   });
 
+  it("saves the headline the user typed in both places, and clears it", async () => {
+    const { saveHeadline } = await import("../src/lib/linkedin");
+    expect(await saveHeadline({ admin, userId: ids.a, headline: "Founder, Acme" })).toBe(true);
+    expect((await rows(ids.a))[0].headline).toBe("Founder, Acme");
+    expect((await admin.from("profiles").select("headline").eq("id", ids.a).single()).data!.headline).toBe("Founder, Acme");
+    expect(await saveHeadline({ admin, userId: ids.a, headline: null })).toBe(true);
+    expect((await rows(ids.a))[0].headline).toBeNull();
+  });
+
+  it("removing LinkedIn access deletes the row and token, records it, and leaves other users alone", async () => {
+    const { saveLinkedInConnection, removeLinkedInConnection } = await import("../src/lib/linkedin");
+    await saveLinkedInConnection({ admin, userId: ids.b, connection: conn(`sub-b-${stamp}`, "AQV-B"), keyB64: KEY });
+    expect(await rows(ids.b)).toHaveLength(1);
+    expect(await removeLinkedInConnection({ admin, userId: ids.b })).toBe(true);
+    expect(await rows(ids.b)).toHaveLength(0);
+    expect(await rows(ids.a)).toHaveLength(1);
+    const audit = (await admin.from("audit_log").select("action").eq("actor_id", ids.b)).data!;
+    expect(audit.map((x) => x.action)).toContain("linkedin_removed");
+    expect(await removeLinkedInConnection({ admin, userId: ids.b })).toBe(true); // nothing to remove is fine
+  });
+
   it("the browser role cannot read the token columns, cannot write, and cannot see another user's row", async () => {
     const asUser = async (email: string) => {
       const c = createClient(url, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, { auth: { persistSession: false } });

@@ -18,7 +18,7 @@ Legend: ✅ done · 🟡 partly done · ⬜ not done · 🔒 waiting for a found
 
 | ID | Feature | Criteria tested | LinkedIn gate | Chrome | 390 px phone | Safari | RLS | PostHog event | Help note | Demoed |
 |---|---|---|---|---|---|---|---|---|---|---|
-| A1 | Sign in with LinkedIn | 🟡 core built and tested; headline decision 🔒; real-account tests 🔒 | ⬜ | ⬜ | ⬜ | ⬜ | ✅ table exists | ⬜ | ⬜ | ⬜ |
+| A1 | Sign in with LinkedIn | 🟡 built and tested; real-account tests 🔒 | ⬜ | ⬜ | ⬜ | ⬜ | ✅ table exists | ⬜ | ⬜ | ⬜ |
 | A2 | Email and Google sign-up | 🟡 email ✅, Google 🔒 | ✅ | ✅ | ✅ | ⬜ | ✅ | ⬜ | ⬜ | ⬜ |
 | A3 | Goal and niche | ✅ | ✅ | ✅ | ✅ | ⬜ | ✅ | ⬜ | ⬜ | ⬜ |
 | A4 | Voice import | ✅ (made-up export; real export 🔒) | ✅ | ✅ | ✅ | ⬜ | ✅ | ⬜ | ⬜ | ⬜ |
@@ -34,8 +34,8 @@ Legend: ✅ done · 🟡 partly done · ⬜ not done · 🔒 waiting for a found
 
 | # | Task | Needs from founders | Status |
 |---|---|---|---|
-| 1 | Write the A1 spec (LinkedIn sign-in) and get it approved | Written 14 Oct 2026 (`docs/specs/A1.md`). Needs both partners' decision on the headline (LinkedIn does not provide it) and the remove button: Q-007 | 🔒 |
-| 2 | Build A1 | LinkedIn app and Supabase provider are set up. Core built 14 Oct 2026; headline field and Remove button wait for Q-007; `TOKEN_ENCRYPTION_KEY` must be added to Vercel | 🟡 |
+| 1 | Write the A1 spec (LinkedIn sign-in) and get it approved | Written 14 Oct 2026 (`docs/specs/A1.md`). Razam Sir approved the headline option and the remove button; Arman's written approval is pending (Q-007, D-009, D-010) | 🟡 |
+| 2 | Build A1 | Built 14 Oct 2026, including the headline field and the Remove button. `TOKEN_ENCRYPTION_KEY` is in Vercel (Production). Real-account tests are next. | ✅ built, tests 🔒 |
 | 3 | Build the Google button for A2 | Google OAuth client | 🔒 |
 | 4 | Add PostHog and the usage events listed in each spec | PostHog account and project key | 🔒 |
 | 5 | Write the 9 one-paragraph help notes and a `/help` page | none | ⬜ |

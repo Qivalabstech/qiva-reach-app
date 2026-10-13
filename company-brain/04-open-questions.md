@@ -36,5 +36,5 @@ Status: Open
 
 ### Q-007 · 14 Oct 2026 · CTO → Founders
 Spec A1 (LinkedIn sign-in) is ready: `docs/specs/A1.md`. Checked in LinkedIn's documentation: sign-in with LinkedIn does **not** return a headline, only name, photo, email and an id. Decision for both partners: (1) Option A, the user types an optional headline in Settings, and the criterion "headline saved" changes accordingly (needs written approval as a compliance exception); or option B, mark A1 "Blocked: compliance"; option C, read it later from the user's data export. CTO recommends A. (2) Include a "Remove LinkedIn access" button (data-protection exception) or not. Also still needed to build A1: the LinkedIn developer app (Q-003) and its Client ID and Secret in Supabase, "Allow manual linking" switched on in Supabase, and `TOKEN_ENCRYPTION_KEY` in Vercel. Say "go" and the CTO gives the click-by-click steps.
-Answer: —  
-Status: Open
+Answer: Razam Sir approved option A (typed headline) and the Remove button in chat on 14 Oct 2026; recorded as D-009 and D-010. Both are scope-lock exceptions, so Arman Hussain's written approval is still needed (a message in chat or an edit of the decisions log is enough). The CTO built both on 14 Oct. (CTO)  
+Status: Open (waiting for Arman)

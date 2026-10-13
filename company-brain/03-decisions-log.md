@@ -4,6 +4,8 @@ Newest first. Only decisions a founder approved go here.
 
 | ID | Date | Decision | Why | Approved by |
 |---|---|---|---|---|
+| D-010 | 14 Oct 2026 | A1: include a "Remove LinkedIn access" button (deletes the saved LinkedIn access from Qiva Reach; the user also removes the app in LinkedIn's settings). Data-protection exception to the scope lock | We store a LinkedIn token, so the user must be able to delete it | Rajamuddin (stated in chat 14 Oct). **Pending: Arman Hussain written approval** (exceptions need both partners) |
+| D-009 | 14 Oct 2026 | A1 option A: LinkedIn does not provide the headline, so name and photo come from LinkedIn and the headline is an optional field the user types in Settings. The criterion "headline saved" is changed to match. Compliance exception to the scope lock | LinkedIn's sign-in returns no headline (LinkedIn documentation) | Rajamuddin (stated in chat 14 Oct). **Pending: Arman Hussain written approval** |
 | D-008 | 12 Oct 2026 | Start the MVP build today in parallel with Phase 0, ahead of the 26 Oct gate. CTO starts with repo setup and specs (Phase 0 WP 0.5), then Phase 1 | Use the time while the waitlist grows | Rajamuddin. **Pending: Arman Hussain** |
 | D-007 | 11 Oct 2026 | Public site is global: English, USD pricing, no rupee or India-only wording | Plan to sell worldwide | Rajamuddin |
 | D-006 | 11 Oct 2026 | Waitlist on Vercel, primary domain www.qivareach.com, signups in Supabase | One stack, moved from Netlify | Rajamuddin |
