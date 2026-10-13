@@ -29,3 +29,9 @@ TypeScript strict. Sentence-case copy. Plain English in code and commits. Commen
 
 ## Tests that call the real model
 `tests/gen-preset-fixtures.test.ts` records real outputs on demand (`GEN_FIXTURES=1`). Re-record after any change to `src/ai/prompts/presets.v1.ts`, then run `npm test`.
+
+## AI calls: thinking tokens
+The models think before they answer, and those hidden tokens count toward `max_tokens`. List-style calls (voice analysis, preset samples, hooks, ideas) pass `noThinking: true` to `askModel` and use a generous limit. The post writer keeps thinking and has a 2,500-token limit. Never set a tight `max_tokens` without checking `stop_reason`.
+
+## Browser tests and the Supabase login limit
+Supabase Auth allows about 30 token verifications per 5 minutes per IP. Tests therefore log in once per worker (`sharedUser` in `tests/e2e/helpers.ts`), wipe that user's data before each test, and use `freshUser` only when a second person is needed. Do not add a magic-link login to every test. A full run uses about 15 logins; leave a few minutes between a local and a live run.

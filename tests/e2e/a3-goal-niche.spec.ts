@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
 import { createClient } from "@supabase/supabase-js";
-import { admin, magicLink, userIdFor } from "./helpers";
+import { admin, cleanup, magicLink, sharedUser, userIdFor } from "./helpers";
 
 async function newUser(page: import("@playwright/test").Page, tag: string) {
-  const email = `a3-${tag}-${Date.now()}@example.com`;
-  await page.goto((await magicLink(email)).path);
+  void tag;
+  const u = await sharedUser(page);
   await expect(page).toHaveURL(/\/onboarding$/);
-  return { email, id: await userIdFor(email) };
+  return u;
 }
 
 test("cannot continue without both a goal and a niche", async ({ page }) => {
@@ -19,7 +19,7 @@ test("cannot continue without both a goal and a niche", async ({ page }) => {
     await page.getByRole("button", { name: "Sales" }).click();
     await expect(cont).toBeEnabled();
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });
 
@@ -48,7 +48,7 @@ test("chip and free-text niche save, show after reload, and update in settings",
     await page.reload();
     await expect(page.getByLabel("Something else")).toHaveValue("sustainable packaging");
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });
 
@@ -72,8 +72,8 @@ test("a user cannot read or change another user's goal or niche (RLS)", async ({
     expect(write.data).toEqual([]);
     expect((await admin.from("profiles").select("niche").eq("id", a.id).single()).data?.niche).toBe("Finance");
   } finally {
-    await admin.auth.admin.deleteUser(a.id);
-    await admin.auth.admin.deleteUser(idB);
+    await cleanup(a.id);
+    await cleanup(idB);
   }
 });
 
@@ -84,6 +84,6 @@ test("onboarding fits a 390 px phone", async ({ page }) => {
     await page.goto("/onboarding");
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });

@@ -17,7 +17,7 @@
 ## Checkpoint 3: Writer (~2 Nov)
 - [ ] C1 ideas
 - [x] C2 post writer (built, tested)
-- [ ] C3 hook lab
+- [x] C3 hook lab (built, tested)
 - [x] Quality test set script and README (10 real users still to collect)
 
 ## Checkpoint 4: LinkedIn sign-in

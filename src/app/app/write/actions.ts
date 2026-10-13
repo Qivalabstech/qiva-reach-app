@@ -78,7 +78,7 @@ async function draftFor(c: Ctx, notes: string, preset: Preset | null) {
         model: process.env.ANTHROPIC_MODEL_WRITER!,
         system,
         user,
-        maxTokens: 700,
+        maxTokens: 2500, // thinking tokens count toward this, so leave room
         userId: c.userId,
         workspaceId: c.workspaceId,
       }),

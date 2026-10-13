@@ -30,6 +30,9 @@
 - [x] C2 post writer: /app/write, draft page with autosave, copy, write again, banned and length checks with rewrites, number warning, style override, limits; quality test set script and README — 14 Oct 2026
 - [x] Migration 20261014000001 (posts.notes, posts.style) applied by Razam Sir — 14 Oct 2026
 
+- [x] C3 hook lab: 10 scored hooks plus current line, one-click swap and swap back, fixed rules (length, generic, banned, invented numbers), top-up call, limits; 75 unit and 49 e2e tests pass — 14 Oct 2026
+- [x] Fixed hidden-thinking token problem for list-style AI calls; test logins reduced to stay under the Supabase Auth rate limit — 14 Oct 2026
+
 ## Remaining
 - Specs B1, B2, C1, C2, C3, A1; accounts; A2 build; Playwright setup; quality test set.
 

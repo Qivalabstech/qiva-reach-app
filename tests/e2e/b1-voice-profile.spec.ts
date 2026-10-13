@@ -1,21 +1,19 @@
 import { test, expect, type Page } from "@playwright/test";
 import { createClient } from "@supabase/supabase-js";
-import { admin, magicLink, userIdFor } from "./helpers";
+import { admin, cleanup, magicLink, sharedUser, userIdFor } from "./helpers";
 
 const live = !!process.env.PLAYWRIGHT_BASE_URL; // live runs call the real model, so exact text is not fixed
 const post = (n: number) => `Post ${n}: what I learned shipping a small product every single week.`;
 const paste = (n: number, extra = "") => Array.from({ length: n }, (_, i) => post(i + 1) + (i === 0 ? extra : "")).join("\n---\n");
 
 async function userWithPosts(page: Page, tag: string, text = paste(5)) {
-  const email = `b1-${tag}-${Date.now()}@example.com`;
-  await page.goto((await magicLink(email)).path);
-  await expect(page).toHaveURL(/\/onboarding$/);
-  const id = await userIdFor(email);
+  void tag;
+  const u = await sharedUser(page);
   await page.goto("/onboarding/voice");
   await page.getByLabel(/Paste your past posts/).fill(text);
   await page.getByRole("button", { name: "Learn my voice" }).click();
   await expect(page).toHaveURL(/\/app\/voice$/);
-  return { email, id };
+  return u;
 }
 
 const profile = async (id: string) =>
@@ -37,7 +35,7 @@ test.describe("stubbed model", () => {
       expect(p.analyzed_at).not.toBeNull();
       expect(p.banned_phrases).toContain("game-changer");
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -79,7 +77,7 @@ test.describe("stubbed model", () => {
       await expect(page.getByText("circle back", { exact: true })).toBeVisible();
       await expect(page.getByText("unlock", { exact: true })).toHaveCount(0);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -91,7 +89,7 @@ test.describe("stubbed model", () => {
       await expect(page.getByLabel("Average length (words)")).toHaveValue("20");
       await expect(page.getByLabel("None")).toBeChecked();
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 
@@ -106,7 +104,7 @@ test.describe("stubbed model", () => {
       await page.getByRole("button", { name: "Replace" }).click();
       await expect(page.getByText("You've learned your voice 5 times today. Try again tomorrow.")).toBeVisible();
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 });
@@ -120,7 +118,7 @@ test("without imported posts the voice page shows the empty state", async ({ pag
     await expect(page.getByText("No posts yet. Paste a few old posts and we'll learn your voice.")).toBeVisible();
     await expect(page.getByRole("link", { name: "Add posts" })).toBeVisible();
   } finally {
-    await admin.auth.admin.deleteUser(id);
+    await cleanup(id);
   }
 });
 
@@ -139,8 +137,8 @@ test("another user cannot read or change this voice profile (RLS)", async ({ pag
     expect(write.data).toEqual([]);
     expect((await profile(a.id)).tone).not.toBe("hacked");
   } finally {
-    await admin.auth.admin.deleteUser(a.id);
-    await admin.auth.admin.deleteUser(idB);
+    await cleanup(a.id);
+    await cleanup(idB);
   }
 });
 
@@ -151,7 +149,7 @@ test("voice page fits a 390 px phone", async ({ page }) => {
     await page.reload();
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
   } finally {
-    await admin.auth.admin.deleteUser(u.id);
+    await cleanup(u.id);
   }
 });
 
@@ -169,7 +167,7 @@ test.describe("real model (live site only)", () => {
       expect(row?.tokens_in).toBeGreaterThan(0);
       expect(Number(row?.cost_usd)).toBeGreaterThan(0);
     } finally {
-      await admin.auth.admin.deleteUser(u.id);
+      await cleanup(u.id);
     }
   });
 });
