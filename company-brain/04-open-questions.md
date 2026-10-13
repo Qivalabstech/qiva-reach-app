@@ -28,3 +28,8 @@ Status: Open
 Specs C1, C2 and C3 are ready for approval (`docs/specs/C1.md`, `C2.md`, `C3.md`). Please confirm three points: (1) In Phase 1 a draft is saved automatically and can be reopened, but a full list of drafts waits for the calendar (D1, Phase 2). (2) Plan limits such as 5 free AI posts a month are not enforced until billing (K1, K3, Phase 2); Phase 1 only has daily safety limits. (3) Each draft request sends up to 3 of the user's own posts to the AI provider as style examples; the privacy policy line in Q-004 must cover this. Build order proposed: C2, then C3, then C1, so the post-writer demo (Q-002) comes first. Arman is also needed for three checks: relevance rating of ideas (C1), his favourite hooks (C3) and 10 test users' posts (C2 quality test set).
 Answer: —  
 Status: Open
+
+### Q-006 · 14 Oct 2026 · CTO → Founders
+The G1 checklist is ready: `docs/gate-g1-checklist.md` (everything and who owns it) and `docs/for-arman.md` (Arman's steps). Three decisions from the founders unblock the test sessions: (1) Resend as the email sender with a sender subdomain such as `mail.qivareach.com` (DNS records on that subdomain only; `www` and the root stay untouched). Supabase's built-in email allows only a few messages an hour, so 10 testers cannot sign up without it. (2) The LinkedIn developer app (Q-003) and a Google OAuth client, so A1 and the Google button can be built. (3) A PostHog account for the usage events every feature needs. Razam Sir: say "go" on any of these and the CTO gives the click-by-click steps.
+Answer: —  
+Status: Open

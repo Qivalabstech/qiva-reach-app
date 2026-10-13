@@ -20,6 +20,15 @@ Updated by whoever changes something. Keep it short; history goes in the logs.
 | Product repository | Created: private `Qivalabstech/qiva-reach-app`. Skeleton and core migration on branch `feat/foundation-skeleton` |
 | Google Search Console | Property added, sitemap submitted 11 Oct 2026 |
 
+## Gate G1 tracker (plan: 8 Nov 2026). Details: `docs/gate-g1-checklist.md`
+
+| Criterion | Target | Now |
+|---|---|---|
+| Phase 1 features meeting their criteria | 9 | 8 built and tested; A1 waits for the LinkedIn app (Q-003) |
+| Test users reaching a draft in under 5 minutes | 10 of 10 | Not started (needs testers and working email) |
+| Test users rating voice match 4 or 5 | 7 of 10 | Not started |
+| Row-level security verified on every table | Yes | Tested in code; audit query to run on the live database |
+
 ## Gate G0 tracker (by 25 Oct 2026)
 
 | Criterion | Target | Now |
