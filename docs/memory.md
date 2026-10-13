@@ -27,6 +27,9 @@
 
 - [x] B2 tone presets: five presets, picker on the voice page, compare page, banned and invented-number checks, daily limit; automated "visibly different" checks on recorded real samples; blind-test files for Arman — 13 Oct 2026
 
+- [x] C2 post writer: /app/write, draft page with autosave, copy, write again, banned and length checks with rewrites, number warning, style override, limits; quality test set script and README — 14 Oct 2026
+- [x] Migration 20261014000001 (posts.notes, posts.style) applied by Razam Sir — 14 Oct 2026
+
 ## Remaining
 - Specs B1, B2, C1, C2, C3, A1; accounts; A2 build; Playwright setup; quality test set.
 

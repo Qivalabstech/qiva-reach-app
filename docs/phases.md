@@ -15,7 +15,10 @@
 - [x] B2 tone presets (built, tested; blind test pending)
 
 ## Checkpoint 3: Writer (~2 Nov)
-- [ ] C1 ideas · C2 post writer · C3 hook lab · quality test set and first score report
+- [ ] C1 ideas
+- [x] C2 post writer (built, tested)
+- [ ] C3 hook lab
+- [x] Quality test set script and README (10 real users still to collect)
 
 ## Checkpoint 4: LinkedIn sign-in
 - [ ] A1 (after the LinkedIn developer app exists, Q-003)

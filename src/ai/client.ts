@@ -20,7 +20,23 @@ export type AskArgs = {
 
 const STUB_REPLY = '{"tone":"direct, warm, short sentences","signature_phrases":["Here is the thing"]}';
 
+const filler = (n: number) => Array(n).fill("word").join(" ");
+
+// Stub for the post writer. Markers in the notes pick a behaviour; a rewrite is recognised by the correction text.
+function stubDraft(a: AskArgs): string {
+  const style = a.system.match(/Preset id: (\w+)/)?.[1] ?? "none";
+  const rewrite = a.system.includes("Your last draft broke a rule");
+  const clean = `Stub draft for ${style}.\n\n${filler(70)}.\n\n${filler(70)}.`;
+  if (a.user.includes("AI_STUB_BANNED_ALWAYS")) return `${clean} This is a game-changer.`;
+  if (a.user.includes("AI_STUB_BANNED_ONCE") && !rewrite) return `${clean} This is a game-changer.`;
+  if (a.user.includes("AI_STUB_SHORT_ONCE") && !rewrite) return `Short stub.\n\n${filler(78)}.`;
+  if (a.user.includes("AI_STUB_NUMBERS")) return `${clean} Revenue grew 40% last year.`;
+  if (a.user.includes("AI_STUB_FAIL")) throw new Error("stubbed failure");
+  return clean;
+}
+
 function stubReply(a: AskArgs): string {
+  if (a.feature === "post_write") return stubDraft(a);
   if (a.feature !== "preset_preview") {
     if (a.user.includes("AI_STUB_FAIL")) throw new Error("stubbed failure");
     return STUB_REPLY;

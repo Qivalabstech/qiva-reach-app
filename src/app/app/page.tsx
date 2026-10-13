@@ -7,6 +7,13 @@ export default async function AppHome() {
   const supabase = await supabaseServer();
   const { data: { user } } = await supabase.auth.getUser();
   const { data: profile } = await supabase.from("profiles").select("full_name").single();
+  const { data: latest } = await supabase
+    .from("posts")
+    .select("id")
+    .eq("status", "draft")
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
   const { count: imported } = await supabase
     .from("posts")
     .select("id", { count: "exact", head: true })
@@ -24,6 +31,8 @@ export default async function AppHome() {
           <Link href="/onboarding/voice" className="underline">Add posts</Link>
         </p>
       )}
+      <Link href="/app/write" className="underline">Write a post</Link>
+      {latest && <Link href={`/app/write/${latest.id}`} className="underline">Continue your draft</Link>}
       <Link href="/app/voice" className="underline">Your voice</Link>
       <Link href="/app/settings" className="underline">Settings</Link>
       <form action={signOut}>
